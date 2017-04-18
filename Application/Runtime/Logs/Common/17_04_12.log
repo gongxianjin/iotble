@@ -1,0 +1,50 @@
+[ 2017-04-12T08:53:08+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004415s ]
+NOTIC: [8] Undefined variable: allowList F:\AppServ\www\muke\ThinkPHP\Library\Think\Dispatcher.class.php 第 134 行.
+
+[ 2017-04-12T09:10:15+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002358s ]
+
+[ 2017-04-12T09:10:43+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006510s ]
+NOTIC: [8] Undefined variable: allowList F:\AppServ\www\muke\ThinkPHP\Library\Think\Dispatcher.class.php 第 110 行.
+
+[ 2017-04-12T09:10:49+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001215s ]
+NOTIC: [8] Undefined variable: allowList F:\AppServ\www\muke\ThinkPHP\Library\Think\Dispatcher.class.php 第 110 行.
+
+[ 2017-04-12T09:10:50+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001912s ]
+NOTIC: [8] Undefined variable: allowList F:\AppServ\www\muke\ThinkPHP\Library\Think\Dispatcher.class.php 第 110 行.
+
+[ 2017-04-12T09:10:51+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001118s ]
+NOTIC: [8] Undefined variable: allowList F:\AppServ\www\muke\ThinkPHP\Library\Think\Dispatcher.class.php 第 110 行.
+
+[ 2017-04-12T09:11:04+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001102s ]
+
+[ 2017-04-12T09:11:10+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001443s ]
+
+[ 2017-04-12T09:12:07+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001106s ]
+
