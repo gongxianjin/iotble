@@ -55,7 +55,7 @@
     
     
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo getLoginUsername()?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
           <a href="/admin.php?c=admin&a=personal"><i class="fa fa-fw fa-user"></i> 个人中心</a>
@@ -111,9 +111,7 @@
               <span class="input-group-addon">栏目</span>
               <select class="form-control" name="catid">
                 <option value='' >全部分类</option>
-                
-                <option value="" ></option>
-                
+                <?php if(is_array($webSiteMenu)): foreach($webSiteMenu as $key=>$sitenav): ?><option value="<?php echo ($sitenav["menu_id"]); ?>" ><?php echo ($sitenav["name"]); ?></option><?php endforeach; endif; ?>
               </select>
             </div>
           </div>
@@ -138,7 +136,7 @@
                 <thead>
                 <tr>
                   <th id="singcms-checkbox-all" width="10"><input type="checkbox"/></th>
-                  <th width="14">排序</th>
+                  <th width="14">排序</th><!--6.7-->
                   <th>id</th>
                   <th>标题</th>
                   <th>栏目</th>
@@ -180,8 +178,17 @@
               </ul>
 
             </nav>
-              
+              <div>
+                <button  id="button-listorder" type="button" class="btn btn-primary dropdown-toggle" ><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>更新排序</button>
+              </div>
             </form>
+            <div class="input-group">
+              <select class="form-control" name="position_id" id="select-push">
+                <option value="0">请选择推荐位进行推送</option>
+                <?php if(is_array($positions)): foreach($positions as $key=>$position): ?><option value="<?php echo ($position["id"]); ?>"><?php echo ($position["name"]); ?></option><?php endforeach; endif; ?>
+              </select>
+              <button id="singcms-push" type="button" class="btn btn-primary">推送</button>
+            </div>
 
           </div>
         </div>

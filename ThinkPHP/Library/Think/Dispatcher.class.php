@@ -107,8 +107,10 @@ class Dispatcher {
                 }
             }
         }
+
         $depr = C('URL_PATHINFO_DEPR');
         define('MODULE_PATHINFO_DEPR',  $depr);
+
         if(empty($_SERVER['PATH_INFO'])) {
             $_SERVER['PATH_INFO'] = '';
             define('__INFO__','');
@@ -128,8 +130,9 @@ class Dispatcher {
                         $_SERVER['PATH_INFO']   =   isset($paths[1])?$paths[1]:'';
                     }
                 }
-            }
+            }             
         }
+
         // URL常量
         define('__SELF__',strip_tags($_SERVER[C('URL_REQUEST_URI')]));
 

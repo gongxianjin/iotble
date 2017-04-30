@@ -8,7 +8,7 @@ class CommonController extends Controller {
 
 
 	public function __construct() {
-
+		
 		parent::__construct();
 		$this->_init();
 	}
@@ -46,6 +46,49 @@ class CommonController extends Controller {
 		return false;
 	}
 
-	
+	public function setStatus($data, $models) {
+		try {
+			if ($_POST) {
+				$id = $data['id'];
+				$status = $data['status'];
+				if (!$id) {
+					return show(0, 'ID不存在');
+				}
+				$res = D($models)->updateStatusById($id, $status);
+				if ($res) {
+					return show(1, '操作成功');
+				} else {
+					return show(0, '操作失败');
+				}
+			}
+			return show(0, '没有提交的内容');
+		}catch(Exception $e) {
+			return show(0, $e->getMessage());
+		}
+	}
+
+	public function listorder($model='') {
+		$listorder = $_POST['listorder'];
+		$jumpUrl = $_SERVER['HTTP_REFERER'];
+		$errors = array();
+		try {
+			if ($listorder) {
+				foreach ($listorder as $id => $v) {
+					// 执行更新
+					$id = D($model)->updateListorderById($id, $v);
+					if ($id === false) {
+						$errors[] = $id;
+					}
+				}
+				if ($errors) {
+					return show(0, '排序失败-' . implode(',', $errors), array('jump_url' => $jumpUrl));
+				}
+				return show(1, '排序成功', array('jump_url' => $jumpUrl));
+			}
+		}catch (Exception $e) {
+			return show(0, $e->getMessage());
+		}
+		return show(0,'排序数据失败',array('jump_url' => $jumpUrl));
+	}
 
 }

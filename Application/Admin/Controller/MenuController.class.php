@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sun
- * Date: 2017/4/15
- * Time: 10:55
+ * 后台菜单相关
  */
 
 namespace Admin\Controller;
