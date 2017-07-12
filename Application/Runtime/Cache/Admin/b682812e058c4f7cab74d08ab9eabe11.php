@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>sing后台管理平台</title>
+    <title>成都先讯后台管理平台</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,20 +49,17 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    
-    <a class="navbar-brand" >singcms内容管理平台</a>
+
+    <a class="navbar-brand" >成都先讯管理平台</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
-    
-    
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo getLoginUsername()?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
           <a href="/admin.php?c=admin&a=personal"><i class="fa fa-fw fa-user"></i> 个人中心</a>
         </li>
-       
         <li class="divider"></li>
         <li>
           <a href="/admin.php?c=login&a=loginout"><i class="fa fa-fw fa-power-off"></i> 退出</a>
@@ -76,14 +73,23 @@
       <li <?php echo (getActive($index)); ?>>
         <a href="/admin.php"><i class="fa fa-fw fa-dashboard"></i> 首页</a>
       </li>
-      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i;?><li <?php echo (getActive($navo["c"])); ?>>
+      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i; if(checkOperModule($navo['c'])){ ?>
+      <li <?php echo (getActive($navo["c"])); ?>>
         <a href="<?php echo (getAdminMenuUrl($navo)); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo ($navo["name"]); ?></a>
-      </li><?php endforeach; endif; else: echo "" ;endif; ?>
+      </li>
+      <?php } endforeach; endif; else: echo "" ;endif; ?>
 
     </ul>
   </div>
   <!-- /.navbar-collapse -->
 </nav>
+
+
+<script type="text/javascript">
+  setInterval(function(){
+    $.get('/admin.php?c=login&a=heart', '');
+  }, 5000);
+</script>
 
     <div id="page-wrapper">
 
@@ -95,7 +101,7 @@
 
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=admin">用户管理</a>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=admin">网站管理员</a>
                     </li>
                     <li class="active">
                         <i class="fa fa-table"></i><?php echo ($nav); ?>
@@ -118,7 +124,9 @@
                         <tr>
                             <th>id</th>
                             <th>用户名</th>
+                            <th>手机号</th>
                             <th>真实姓名</th>
+                            <th>用户组</th>
                             <th>最后登录时间</th>
                             <th>状态</th>
                             <th>操作</th>
@@ -126,13 +134,14 @@
                         </thead>
                         <tbody>
                         <?php if(is_array($admins)): $i = 0; $__LIST__ = $admins;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                                
                                 <td><?php echo ($vo["admin_id"]); ?></td>
                                 <td><?php echo ($vo["username"]); ?></td>
+                                <td><?php echo ($vo["phone"]); ?></td>
                                 <td><?php echo ($vo["realname"]); ?></td>
+                                <td><?php echo (getRoleName($vo["role_id"])); ?></td>
                                 <td><?php echo (date("Y-m-d H:i",$vo["lastlogintime"])); ?></td>
-                                <td><span  attr-status="<?php if($vo['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($vo["admin_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($vo["status"])); ?></span></td>
-                                <td>    <a href="javascript:void(0)" attr-id="<?php echo ($vo["admin_id"]); ?>" id="singcms-delete"  attr-a="admin" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
+                                <td><span attr-status="<?php if($vo['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($vo["admin_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($vo["status"])); ?></span></td>
+                                <td><a href="javascript:void(0)" attr-id="<?php echo ($vo["admin_id"]); ?>" id="singcms-delete"  attr-a="admin" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 
                         </tbody>

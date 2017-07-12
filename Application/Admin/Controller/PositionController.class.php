@@ -26,7 +26,9 @@ class PositionController extends CommonController {
                 return $this->save($_POST);
             }
             try {
-
+                //添加操作日志
+                $log = '新增推荐位'.$_POST['name'];
+                $this->addOperLog($log);
                 $id = D("Position")->insert($_POST);
                 if($id) {
                     return show(1,'新增成功',$id);
@@ -60,6 +62,9 @@ class PositionController extends CommonController {
         $id = $data['id'];
         unset($data['id']);
         try {
+            //添加操作日志
+            $log = '更新推荐位'.$id;
+            $this->addOperLog($log);
             $id = D("Position")->updateById($id,$data);
             if($id === false) {
                 return show(0,'更新失败');

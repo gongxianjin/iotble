@@ -6,6 +6,15 @@ $("#button-add").click(function(){
     window.location.href=url;
 });
 
+
+/**
+ * 初始化按钮操作
+ */
+$("#button-init").click(function(){
+    var url = SCOPE.init_url;
+    window.location.href=url;
+});
+
 /**
  * 提交form表单操作
  */
@@ -15,7 +24,6 @@ $("#singcms-button-submit").click(function(){
     $(data).each(function(i){
        postData[this.name] = this.value;
     });
-    console.log(postData);
     // 将获取到的数据post给服务器
     url = SCOPE.save_url;
     jump_url = SCOPE.jump_url;
@@ -38,6 +46,23 @@ $('.singcms-table #singcms-edit').on('click',function(){
     window.location.href=url;
 });
 
+/*
+    列表模型
+ */
+$('.singcms-table #singcms-list').on('click',function(){
+    var pid = $(this).attr('attr-pid');
+    var url = SCOPE.list_url+pid;
+    window.location.href=url;
+});
+
+/*
+ 添加子分类模型
+ */
+$('.singcms-table #singcms-plus').on('click',function(){
+    var pid = $(this).attr('attr-pid');
+    var url = SCOPE.plus_url + '&pid='+pid;
+    window.location.href=url;
+});
 
 /**
  * 删除操作JS

@@ -28,6 +28,9 @@ class BasicController extends CommonController {
 			}
 
 			D("Basic")->save($_POST);
+			//添加操作日志
+			$log = '配置系统信息';
+			$this->addOperLog($log);
 			return show(1, '配置成功');
 		}else {
 			return show(0, '没有提交的数据');

@@ -1,0 +1,479 @@
+[ 2017-07-04T10:00:09+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001277s ]
+
+[ 2017-07-04T11:04:01+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000754s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004614s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004825s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0177s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0063s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0324s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0141s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0021s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0023s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0017s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000058s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0312s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0137s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.167582s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.167798s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004373s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004542s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004651s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004817s ]
+
+[ 2017-07-04T11:04:07+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001428s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002516s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002599s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0065s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0051s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0069s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0049s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000145s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0138s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0070s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.149054s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.149131s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003997s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004056s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004160s ]
+
+[ 2017-07-04T11:04:33+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001790s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002859s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003016s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0331s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0101s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0117s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0101s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000167s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0094s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0101s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107533s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107629s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001635s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001738s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002221s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002316s ]
+
+[ 2017-07-04T11:05:26+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002079s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002880s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003005s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0114s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0109s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0105s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0106s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000168s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0056s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.092088s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001961s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002043s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002072s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002150s ]
+
+[ 2017-07-04T11:05:47+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001881s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003084s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0050s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0075s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000065s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000135s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0088s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.112729s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112803s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001837s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001922s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002110s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002195s ]
+
+[ 2017-07-04T11:06:51+08:00 ] 127.0.0.1 /index.php?c=index&a=build_html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001239s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001563s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0089s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0097s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0086s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0091s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000118s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0138s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0096s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096745s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.096808s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001579s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001639s ]
+
+[ 2017-07-04T11:07:34+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001065s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002553s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002668s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0096s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0087s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0101s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000059s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000120s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0133s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0122s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.115819s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.115907s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002442s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002538s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002644s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002746s ]
+
+[ 2017-07-04T11:08:48+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001833s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003572s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0310s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0064s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0081s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0092s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000082s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000171s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0103s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.091693s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.091801s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002923s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005907s ]
+
+[ 2017-07-04T11:09:02+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001834s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003220s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003391s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0349s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0067s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0105s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0067s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0012s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000177s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0121s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0097s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107571s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107650s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001243s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001310s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002075s ]
+
+[ 2017-07-04T11:26:43+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000575s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000732s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000808s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0569s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.1196s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0589s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 2 ORDER BY listorder desc ,id desc LIMIT 1   [ RunTime:0.0048s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 3 ORDER BY listorder desc ,id desc LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 AND `thumb` <> '' ORDER BY news_id desc LIMIT 30   [ RunTime:0.0011s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000064s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000137s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0093s ]
+NOTIC: [8] Undefined index: catId F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 22 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+NOTIC: [8] Undefined index: name F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 83 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.098572s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.098657s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004194s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004299s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002752s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002859s ]
+
+[ 2017-07-04T14:45:59+08:00 ] 127.0.0.1 /index.php?m=&&c=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001282s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004221s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004368s ]
+ERR: 无法加载控制器:Login
+
+[ 2017-07-04T14:46:07+08:00 ] 127.0.0.1 /index.php?m=&&c=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000812s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001321s ]
+ERR: 无法加载控制器:Login
+
+[ 2017-07-04T19:56:07+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001122s ]
+
+[ 2017-07-04T20:20:35+08:00 ] 127.0.0.1 /index.php?c=detail&id=22
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000973s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002909s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003011s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `xc_news` [ RunTime:0.0305s ]
+SQL: SELECT * FROM `xc_news` WHERE ( news_id=22 ) LIMIT 1   [ RunTime:0.0055s ]
+SQL: UPDATE `xc_news` SET `count`='24' WHERE ( news_id=22 ) [ RunTime:0.0009s ]
+NOTIC: [2048] Declaration of Common\Model\NewsContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\NewsContentModel.class.php 第 46 行.
+SQL: SHOW COLUMNS FROM `xc_news_content` [ RunTime:0.0688s ]
+SQL: SELECT * FROM `xc_news_content` WHERE ( news_id=22 ) LIMIT 1   [ RunTime:0.0282s ]
+NOTIC: [2048] Declaration of Common\Model\PositionContentModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 89 行.
+SQL: SHOW COLUMNS FROM `xc_position_content` [ RunTime:0.0096s ]
+NOTIC: [8] Undefined index: title F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\PositionContentModel.class.php 第 18 行.
+SQL: SELECT * FROM `xc_position_content` WHERE `status` = 1 AND `position_id` = 5 ORDER BY listorder desc ,id desc LIMIT 2   [ RunTime:0.0099s ]
+SQL: SELECT * FROM `xc_news` WHERE `status` = 1 ORDER BY count desc,news_id desc  LIMIT 10   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000113s ]
+NOTIC: [2048] Declaration of Common\Model\BasicModel::save() should be compatible with that of Think\Model::save() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\BasicModel::select() should be compatible with that of Think\Model::select() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\BasicModel.class.php 第 30 行.
+NOTIC: [2048] Declaration of Common\Model\MenuModel::find() should be compatible with that of Think\Model::find() F:\AppServ\www\iotcab\trunk\www\Application\Common\Model\MenuModel.class.php 第 93 行.
+SQL: SHOW COLUMNS FROM `xc_menu` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `xc_menu` WHERE `status` = 1 AND `type` = 0 ORDER BY listorder desc,menu_id desc  [ RunTime:0.0093s ]
+NOTIC: [8] Undefined index: adNews F:\AppServ\www\iotcab\trunk\www\Application\Runtime\Cache\Home\0d75cb75cd30b13fdd4834afd69acb19.php 第 62 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.073051s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.073119s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002199s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002258s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002565s ]
+
+[ 2017-07-04T20:20:35+08:00 ] 127.0.0.1 /upload/2016/03/13/56e51b7fcd445.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000976s ]
+

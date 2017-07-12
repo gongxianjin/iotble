@@ -4,7 +4,7 @@ use Think\Model;
 
 /**
  * 用户组操作
- * @author  singwa
+ * @author  victor
  */
 class AdminModel extends Model {
 	private $_db = '';

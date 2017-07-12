@@ -8,7 +8,6 @@ class MenuModel extends  Model {
         $this->_db = M('menu');
     }
 
-
     public function insert($data = array()) {
         if(!$data || !is_array($data)) {
             return 0;
@@ -75,7 +74,8 @@ class MenuModel extends  Model {
             'type' => 1,
         );
 
-        return $this->_db->where($data)->order('listorder desc,menu_id desc')->select();
+        $res = $this->_db->where($data)->order('listorder desc,menu_id desc')->select();
+        return $res;
     }
 
     public function getBarMenus() {
@@ -87,6 +87,7 @@ class MenuModel extends  Model {
         $res = $this->_db->where($data)
             ->order('listorder desc,menu_id desc')
             ->select();
+
         return $res;
     }
 }

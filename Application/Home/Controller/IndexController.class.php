@@ -4,6 +4,7 @@ use Think\Controller;
 use Think\Exception;
 
 class IndexController extends CommonController {
+
     public function index($type=''){
         //获取排行
         $rankNews = $this->getRank();

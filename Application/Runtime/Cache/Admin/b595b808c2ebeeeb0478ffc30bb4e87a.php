@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>sing后台管理平台</title>
+    <title>成都先讯后台管理平台</title>
     <!-- Bootstrap Core CSS -->
     <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -48,20 +48,17 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    
-    <a class="navbar-brand" >singcms内容管理平台</a>
+
+    <a class="navbar-brand" >成都先讯管理平台</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
-    
-    
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo getLoginUsername()?> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li>
           <a href="/admin.php?c=admin&a=personal"><i class="fa fa-fw fa-user"></i> 个人中心</a>
         </li>
-       
         <li class="divider"></li>
         <li>
           <a href="/admin.php?c=login&a=loginout"><i class="fa fa-fw fa-power-off"></i> 退出</a>
@@ -75,14 +72,23 @@
       <li <?php echo (getActive($index)); ?>>
         <a href="/admin.php"><i class="fa fa-fw fa-dashboard"></i> 首页</a>
       </li>
-      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i;?><li <?php echo (getActive($navo["c"])); ?>>
+      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i; if(checkOperModule($navo['c'])){ ?>
+      <li <?php echo (getActive($navo["c"])); ?>>
         <a href="<?php echo (getAdminMenuUrl($navo)); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo ($navo["name"]); ?></a>
-      </li><?php endforeach; endif; else: echo "" ;endif; ?>
+      </li>
+      <?php } endforeach; endif; else: echo "" ;endif; ?>
 
     </ul>
   </div>
   <!-- /.navbar-collapse -->
 </nav>
+
+
+<script type="text/javascript">
+  setInterval(function(){
+    $.get('/admin.php?c=login&a=heart', '');
+  }, 5000);
+</script>
 
 <div id="page-wrapper">
 
@@ -92,7 +98,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    您好<?php echo getLoginUsername()?>!欢迎使用singcms内容管理平台
+                    您好<?php echo getLoginUsername()?>!欢迎使用成都先讯管理平台
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">

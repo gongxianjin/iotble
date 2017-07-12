@@ -45,6 +45,9 @@ class PositioncontentController extends CommonController {
                 }
 
             }
+            //添加操作日志
+            $log = '新增推荐位内容'.$_POST['title'];
+            $this->addOperLog($log);
             if($_POST['id']) {
               return $this->save($_POST);
             }

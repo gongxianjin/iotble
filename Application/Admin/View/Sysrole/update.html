@@ -1,0 +1,96 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+
+	<include file="Index/nav"/>
+	<script src="/Public/js/kindeditor/kindeditor-all.js"></script>
+	<div id="page-wrapper">
+
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-dashboard"></i>  <a href="/admin.php?c=singlepage">权限管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-edit"></i> 角色编辑
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<div class="col-lg-6">
+
+					<form class="form-horizontal" id="singcms-form">
+
+						<div class="form-group">
+							<label for="inputname" class="col-sm-2 control-label">角色名称:</label>
+							<div class="col-sm-5">
+								<input type="text" name="name" class="form-control" id="inputname" value="{$data.name}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">权限信息:</label>
+							<div class="col-sm-10">
+								<div class="checkbox">
+									<volist name="powers" id="vo" key="k">
+										<p style="background:#eee;">{$vo.c_arlias}:</p>
+										<div style="line-height:24px;padding: 10px 0 20px 16px;">　
+											<volist name="vo['item']" id="v">
+												<label style="display:inline-block;width:120px;">
+													<input type="checkbox"  <php>if(in_array($vo["c_name"].'-'.$key, $cname)){</php>checked="checked"<php>}</php> value="{$vo.c_name}-{$key}" name="power_id[{$vo.c_name}-{$key}]">{$v}
+												</label>
+											</volist>
+										</div>
+									</volist>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" value="{$data.id}" name="id"/>
+								<button type="button" class="btn btn-default" id="singcms-button-submit">提交</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- /#page-wrapper -->
+
+</div>
+<script>
+	var SCOPE = {
+		'save_url' : '/admin.php?c=sysrole&a=updateRun',
+		'jump_url' : '/admin.php?c=sysrole',
+	};
+
+	$(function(){
+		$('.checkbox input[type=checkbox]').change(function(){
+			if($(this).parent().index()==0){
+				if(this.checked){
+					$(this).parent().parent().find('input[type=checkbox]:not(:eq(0))').prop("checked", this.checked);
+				}else{
+					$(this).parent().parent().find('input[type=checkbox]:not(:eq(0))').prop("checked", this.checked);
+				}
+			}else{
+				if(this.checked){
+					$(this).parent().parent().find('label:eq(0) input[type=checkbox]').prop("checked", this.checked);
+				}
+			}
+		});
+	});
+</script>
+<include file="Index/footer" />

@@ -4,7 +4,7 @@ use Think\Model;
 
 /**
  * 文章内容model操作
- * @author  singwa
+ * @author  victor
  */
 class NewsModel extends Model {
     private $_db = '';
@@ -44,7 +44,6 @@ class NewsModel extends Model {
             ->select();
 
         return $list;
-
     }
 
 

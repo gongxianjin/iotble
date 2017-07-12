@@ -19,7 +19,7 @@
                         <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=menu">菜单管理</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-table"></i>{$nav}
+                        <i class="fa fa-table"></i>菜单列表
                     </li>
                 </ol>
             </div>
@@ -32,7 +32,6 @@
                     <span class="input-group-addon">类型</span>
                     <select class="form-control" name="type">
                         <option value='' >请选择类型</option>
-
                         <option value="1" <if condition="$type eq 1">selected="selected"</if>>后台菜单</option>
                         <option value="0" <if condition="$type eq 0">selected="selected"</if>>前端导航</option>
                     <lect>

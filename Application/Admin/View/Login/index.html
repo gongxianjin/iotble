@@ -1,55 +1,56 @@
-
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="">
-  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="">
-
-  <title>singcms内容管理平台</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="signin.css" rel="stylesheet">
-
-
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-
-  <![endif]-->
+  <title>{$Think.config.WEB_NAME} - 后台管理系统 - 先讯物联(www.xcentiot.com)</title>
+  <meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+  <meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+  <link rel="stylesheet" href="__PUBLIC__/css/login.css" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <script type="text/javascript">
+    var URL = '{:U("admin/login/verify")}&';
+    bg = new Array(2); //设定图片数量，如果图片数为3，这个参数就设为2，依次类推
+    bg[0] = '__PUBLIC__/images/a.jpg'; //显示的图片路径，可用http://
+    bg[1] = '__PUBLIC__/images/b.jpg';
+    bg[2] = '__PUBLIC__/images/c.jpg';
+    index = Math.floor(Math.random() * bg.length);
+    document.write("<BODY BACKGROUND="+bg[index]+">");
+  </script>
 </head>
-
 <body>
-<style>
-  .s_center {
-    margin-left: auto;
-    margin-right: auto;
-  }
-</style>
-<div class="s_center container col-lg-6 ">
-
-    <form class="form-signin" enctype="multipart/form-data"  method="post">
-      <h2 class="form-signin-heading">请登录</h2>
-      <label class="sr-only">用户名</label>
-      <input type="text"  class="form-control" name="username" placeholder="请填写用户名" required autofocus>
-      <br />
-      <label  class="sr-only">密码</label>
-      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
-      <br />
-      <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login.check()">登录</button>
-    </form>
-
-</div> <!-- /container -->
-<script src="/Public/js/jquery.js"></script>
-<script src="/Public/js/dialog/layer.js"></script>
-<script src="/Public/js/dialog.js"></script>
-<script src="/Public/js/admin/login.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<a href="/" title="返回 -> {$Think.config.WEB_NAME}"><div id="top"></div></a>
+<div class="login">
+  <form class="form-signin" enctype="multipart/form-data"  method="post" id="login">
+    <table border="1" width="100%">
+      <tr>
+        <th>账号:</th>
+        <td>
+          <input type="username" name="username"  class="len250" />
+        </td>
+      </tr>
+      <tr>
+        <th>密码:</th>
+        <td>
+          <input type="password" class="len250" name="password" />
+        </td>
+      </tr>
+      <tr>
+        <th>验证:</th>
+        <td>
+          <input type="code" class="len250" name="code"/> <a href="javascript:void(login.change_code(this));"><img src="{:U('admin/login/verify')}" id="code"/> </a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-left:104px;"> <input type="button" class="submit" value="登录" onclick="login.check()"/></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding-left:104px;color:#333;font-size:13px;line-height:24px;"> 技术支持：<a href="http://www.xcentiot.com" title="成都先讯物联" style="color:#333;" target="_blank">成都先讯物联 www.xcentiot.com</a>&nbsp;&nbsp;&nbsp;&nbsp;QQ：617699485</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/dialog/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/dialog.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/admin/login.js"></script>
 </body>
 </html>

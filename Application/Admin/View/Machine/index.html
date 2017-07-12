@@ -1,0 +1,121 @@
+
+<include file="Index/header" />
+<body>
+
+<div id="wrapper">
+
+    <include file="Index/nav"/>
+
+    <div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">货机管理</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i>货机列表
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <form action="/admin.php" method="get">
+                <div class="col-md-8">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">设备号</span>
+                            <input class="form-control" name="id" type="text" value="" placeholder="设备号"/>
+                        </div>
+                    </div>
+                    <input type="hidden" name="c" value="machine"/>
+                    <input type="hidden" name="a" value="index"/>
+                    <div class="input-group">
+                        <input class="form-control" name="devicename" type="text" value="" placeholder="设备名称" />
+                        <span class="input-group-btn">
+                          <button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>设备号</th>
+                            <th>设备名称</th>
+                            <th>机器类型</th>
+                            <th>电源电压</th>
+                            <th>开门监控</th>
+                            <th>信号</th>
+                            <th>最新上送数据时间</th>
+                            <th>网络状况</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="machines" id="vo">
+                            <tr>
+                                <td>{$vo.id}</td>
+                                <td>{$vo.devicename}</td>
+                                <td>{$vo.devicetypename}</td>
+                                <td>{$vo.vol_m}</td>
+                                <td>{$vo.inv}</td>
+                                <td>{$vo.rssi}</td>
+                                <td>{$vo.devtime}</td>
+                                <td>{$vo.devstatus|devstatus}</td>
+                                <td>
+                                    <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$vo.id}" ></span>
+                                    <span class="sing_cursor glyphicon glyphicon-wrench" aria-hidden="true" id="singcms-set" attr-id="{$vo.id}" ></span>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul >
+                            {$pageres}
+                        </ul>
+                    </nav>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+<script>
+    var SCOPE = {
+        'add_url' : '/admin.php?c=machine&a=add',
+        'edit_url' : '/admin.php?c=machine&a=edit',
+        'index_url' : '/',
+
+    }
+</script>
+
+<include file="Index/footer" />
+
+
+
+
+

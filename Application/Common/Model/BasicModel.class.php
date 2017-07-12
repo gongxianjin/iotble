@@ -4,7 +4,7 @@ use Think\Model;
 
 /**
  * 基本设置
- * @author  singwa
+ * @author  victor
  */
 class BasicModel extends Model {
 

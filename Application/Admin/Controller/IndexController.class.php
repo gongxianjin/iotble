@@ -14,7 +14,7 @@ class IndexController extends CommonController {
         $adminCount = D("Admin")->getLastLoginUsers();
 
         $this->assign('news', $news);
-        $this->assign('newscount', $newscount);
+        $this->assign('newscount', $newscount);;
         $this->assign('positioncount', $positionCount);
         $this->assign('admincount', $adminCount);
         $this->display();

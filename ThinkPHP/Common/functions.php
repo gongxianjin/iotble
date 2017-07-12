@@ -814,8 +814,9 @@ function strip_whitespace($content) {
  */
 function throw_exception($msg, $type='Think\\Exception', $code=0) {
     Think\Log::record('建议使用E方法替代throw_exception',Think\Log::NOTICE);
-    if (class_exists($type, false))
+    if (class_exists($type, false)){
         throw new $type($msg, $code);
+    }
     else
         Think\Think::halt($msg);        // 异常类型不存在则输出错误信息字串
 }

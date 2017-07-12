@@ -22,7 +22,6 @@ class ImageController extends CommonController {
         }else{
             return show(1,'上传成功',$res);
         }
-
     }
     public function kindupload(){
         $upload = D("UploadImage");

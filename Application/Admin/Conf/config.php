@@ -13,4 +13,6 @@ return array(
         4 => '搜狐',
 
     ),
+    'SHOW_PAGE_TRACE' =>true, // 显示页面Trace信息
+    'WEB_NAME' => '成都先讯',
 );

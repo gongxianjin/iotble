@@ -26,13 +26,15 @@ class MenuController extends CommonController {
             if($_POST['menu_id']) {
                 return $this->save($_POST);
             }
+            //添加操作日志
+            $log = '添加菜单'.$_POST['name'];
+            $this->addOperLog($log);
             $menuId = D("Menu")->insert($_POST);
             if($menuId) {
                 return show(1,'新增成功',$menuId);
             }
             return show(0,'新增失败',$menuId);
-
-        }else {
+        }else{
             $this->display();
         }
         //echo "welcome to singcms";
@@ -73,6 +75,9 @@ class MenuController extends CommonController {
         unset($data['menu_id']);
 
         try {
+            //添加操作日志
+            $log = '编辑菜单'.$menuId;
+            $this->addOperLog($log);
             $id = D("Menu")->updateMenuById($menuId, $data);
             if($id === false) {
                 return show(0,'更新失败');

@@ -1,0 +1,117 @@
+
+<include file="Index/header" />
+<body>
+
+<div id="wrapper">
+    <include file="Index/nav"/>
+    <div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=operlog">日志管理</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i>日志列表
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <form action="/admin.php" method="get">
+                <div class="col-md-8">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="laydate laydate-icon" size="17" name="begin_time" value="" placeholder="开始日期" onclick="laydate()">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="laydate laydate-icon" size="17" name="end_time" value="" placeholder="结束日期" onclick="laydate()">
+                        </div>
+                    </div>
+                    <input type="hidden" name="c" value="operlog"/>
+                    <input type="hidden" name="a" value="index"/>
+                    <div class="input-group">
+                        <input class="form-control" name="sword" type="text" value="" placeholder="关键词" />
+                        <span class="input-group-btn">
+                          <button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>操作员</th>
+                            <th>操作内容</th>
+                            <th>IP地址</th>
+                            <th>日期</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="Operlogs" id="vo">
+                            <tr>
+                                <td>{$vo.log_id}</td>
+                                <td>{$vo.username}</td>
+                                <td>{$vo.log_info}</td>
+                                <td>{$vo.ip_address}</td>
+                                <td>{$vo.log_time|date="Y-m-d H:i",###}</td>　
+                                <td>
+                                <a href="javascript:void(0)" attr-id="{$vo.log_id}" id="singcms-delete"  attr-message="删除">
+                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                </a>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul>
+                            {$pageres}
+                        </ul>
+                    </nav>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+
+<script src="/Public/js/laydate-v1.1/laydate/laydate.js"></script>
+<script>
+    var SCOPE = {
+        'set_status_url' : '/admin.php?c=operlog&a=del',
+        'index_url' : '/',
+    }
+    laydate.skin('huanglv');
+</script>
+
+
+<include file="Index/footer" />
+
+
+
+
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$singlepage.title}-{$Think.config.WEB_NAME}</title>
+<meta name="description" content="{$Think.config.WEB_DESRIPTION}" />
+<meta name="keywords" content="{$Think.config.WEB_KEYWORDS}" />
+<include file='Common:css'/>
+<link rel="stylesheet" href="/Data/Ueditor2/third-party/SyntaxHighlighter/shCoreDefault.css" />
+<script type="text/javascript" src="/Data/Ueditor2/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="text/javascript">
+    $(function(){
+        allid = $('#allid').attr("title");
+        if(allid==6){
+            $('#nav3').addClass('cur');
+        }else if(allid == 8){
+            $('#nav6').addClass('cur');
+        }else if(allid == 5){
+            $('#nav7').addClass('cur');
+        }
+    });
+
+    SyntaxHighlighter.all();
+</script>
+</head>
+</body>
+<include file="Common:head"/>
+
+<div class="pagefocuswrap" style="background:url(/Uploads/slide/{$singlepage.banner|default='default.jpg'})">
+    <div class="pagefocus">
+        <p><i></i><b>{$singlepage.title}&nbsp;&nbsp;{$singlepage.etitle}</b><strong></strong></p>
+    </div>
+</div>
+
+<div class="ArticlemainWrap" id="allid" title="{$singlepage.id}">
+    <div class="Articlemain">
+        <div class="box">
+            <div class="content" id="fr">
+                <h3 style="margin-bottom:10px;"><b>{$singlepage.title}</b><span>{$singlepage.etitle}</span></h3>
+
+                <a href="/cases.html" class="maph2">服务案例</a>
+                <div class="maplist">
+                    <foreach name="cases" item="v">
+                        <a href="/cases/list/{$v.id}">{$v.name}</a>
+                    </foreach>
+                </div>
+
+                <a href="/research.html" class="maph2">研究成果</a>
+                <div class="maplist">
+                    <foreach name="research" item="v">
+                        <a href="/research/list/{$v.id}">{$v.name}</a>
+                    </foreach>
+                </div>
+
+                <a href="/team.html" class="maph2">归派团队</a>
+                <div class="maplist">
+                    <foreach name="team" item="v">
+                        <a href="/team/list/{$v.id}">{$v.name}</a>
+                    </foreach>
+                </div>
+
+                <a href="/article.html" class="maph2">归派动态</a>
+                <div class="maplist">
+                    <foreach name="article" item="v">
+                        <a href="/article/list/{$v.id}">{$v.name}</a>
+                    </foreach>
+                </div>
+
+                <a href="/html/about.html" class="maph2">关于我们</a>
+                <div class="maplist">
+                    <foreach name="single" item="v">
+                        <a href="/html/{$v.filename}.html">{$v.title}</a>
+                    </foreach>
+                </div>
+
+
+
+            </div>
+
+            <div class="ArticlesideBar" id="fl">
+                <ul class="ResearchNav">
+                     <foreach name="pagelist" item="v">
+                        <if condition="$v['filename'] eq $filename">
+                            <a href="{:U('/html/'.$v['filename'])}" class="cur">{$v.title}</a>
+                        <else/>
+                            <a href="{:U('/html/'.$v['filename'])}">{$v.title}</a>
+                        </if>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+        <div class="friend">
+            <div class="t">
+                <b>友情链接</b>
+            </div>
+           <div class="c">
+                {:W('Friendlink')}
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<include file="Common:footer"/>
+</body>
+</html>

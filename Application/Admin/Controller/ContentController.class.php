@@ -57,9 +57,16 @@ class ContentController extends CommonController {
             if($_POST['news_id']) {
                 return $this->save($_POST);
             }
+            //添加操作日志
+            $log = '新增文章'.$_POST['title'];
+            $this->addOperLog($log);
             $newsId = D("News")->insert($_POST);
             if($newsId) {
                 $newsContentData['content'] = $_POST['content'];
+                if(get_magic_quotes_gpc())//如果get_magic_quotes_gpc()是打开的
+                {
+                    $newsContentData['content']=stripslashes($newsContentData['content']);//将字符串进行处理
+                }
                 $newsContentData['news_id'] = $newsId;
                 $cId = D("NewsContent")->insert($newsContentData);
                 if($cId){
@@ -67,16 +74,12 @@ class ContentController extends CommonController {
                 }else{
                     return show(1,'主表插入成功，副表插入失败');
                 }
-
-
             }else{
                 return show(0,'新增失败');
             }
 
         }else {
-
             $webSiteMenu = D("Menu")->getBarMenus();
-
             $titleFontColor = C("TITLE_FONT_COLOR");
             $copyFrom = C("COPY_FROM");
             $this->assign('webSiteMenu', $webSiteMenu);
@@ -117,7 +120,14 @@ class ContentController extends CommonController {
         try {
             $id = D("News")->updateById($newsId, $data);
             $newsContentData['content'] = $data['content'];
+            if(get_magic_quotes_gpc())//如果get_magic_quotes_gpc()是打开的
+            {
+                $newsContentData['content']=stripslashes($newsContentData['content']);//将字符串进行处理
+            }
             $condId = D("NewsContent")->updateNewsById($newsId, $newsContentData);
+            //添加操作日志
+            $log = '更新文章'.$newsId;
+            $this->addOperLog($log);
             if($id === false || $condId === false) {
                 return show(0, '更新失败');
             }

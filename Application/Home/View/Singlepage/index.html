@@ -1,0 +1,46 @@
+
+<include file="Index/header" />
+<section>
+    <div class="container"  id="allid" title="{$singlepage.id}">
+        <div class="row">
+            <div class="col-sm-9 col-md-9">
+                <a href="/" class="home">{:C('WEB_NAME')}</a>
+                <span>/</span>
+                <a href="#">{$singlepage.title}</a>
+                <div style="display:none"><script type="text/javascript" src="{:U(GROUP_NAME.'/Index/COUNT',array('id'=>$html['id'],'type'=>$catedata['mo'],'field'=>'click'))}"></script></div>
+            </div>
+            <div class="col-sm-9 col-md-9">
+                <div class="t">
+                    <if condition="$singlepage['banner'] NEQ ''">
+                        <img src="/Uploads/slide/{$singlepage.banner}"/>
+                    </if>
+                </div>
+                <div class="c">
+                    <div class="sc">
+                        {$singlepage.content}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+<script src="/Public/js/jquery.js"></script>
+<script>
+
+</script>
+</html>
+
+<script type="text/javascript">
+    $(function(){
+        allid = $('#allid').attr("title");
+        if(allid==6){
+            $('#nav5').addClass('cur');
+        }else if(allid == 23){
+            $('#nav4').addClass('cur');
+        }
+    });
+
+    SyntaxHighlighter.all();
+</script>

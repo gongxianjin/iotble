@@ -4,7 +4,7 @@ use Think\Model;
 
 /**
  * 文章内容content model操作
- * @author  singwa
+ * @author  victor
  */
 class NewsContentModel extends Model {
     private $_db = '';

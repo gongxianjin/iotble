@@ -19,6 +19,21 @@ function getMd5Password($password) {
 function getMenuType($type) {
     return $type == 1 ? '后台菜单' : '前端导航';
 }
+
+function getRoleName($roleid){
+    $res = M('sysrole')->find($roleid);
+    return $res['name'];
+}
+
+function getMemberRoleName($roleid){
+    if($roleid){
+        $res = M('role')->find($roleid);
+        return $res['role_name'];
+    }else{
+        return false;
+    }
+}
+
 function status($status) {
     if($status == 0) {
         $str = '关闭';
@@ -29,8 +44,41 @@ function status($status) {
     }
     return $str;
 }
+
+function devstatus($status) {
+    if($status == 0) {
+        $str = '离线';
+    }elseif($status == 1) {
+        $str = '在线';
+    }
+    return $str;
+}
+
+function orderstatus($status) {
+    if($status == 1) {
+        $str = '成功';
+    }elseif($status == 4) {
+        $str = '失败';
+    }else{
+        $str = "无";
+    }
+    return $str;
+}
+
+function is_show($show) {
+    if($show == 0) {
+        $str = '不显示';
+    }elseif($show == 1) {
+        $str = '显示';
+    }
+    return $str;
+}
 function getAdminMenuUrl($nav) {
-    $url = '/admin.php?c='.$nav['c'].'&a='.$nav['a'];
+    if($nav['a']){
+        $url = '/admin.php?c='.$nav['c'].'&a='.$nav['a'];
+    }else{
+        $url = '/admin.php?c='.$nav['c'];
+    }
     if($nav['f']=='index') {
         $url = '/admin.php?c='.$nav['c'];
     }
@@ -113,5 +161,37 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true)
 
 
 
+// 检测单元操作权限
+function checkOperModule($c, $a='index'){
+    if(!$c || !$a) return false;
+    $ingnore_controller = array('Index');
+    $ingnore_action = array('updateRun','select', 'order','save','listorder');
+    if(in_array($c, $ingnore_controller) || in_array($a, $ingnore_action)) return true;
+//		if($_SESSION['SADMIN_ID']['admin_id'] ==  1) return true;
+    static $G_POWER;
+    if(!$G_POWER){
+        $G_POWER = M('sysrole')->find($_SESSION['adminUser']['role_id']);
+    }
+    return $G_POWER && stristr($G_POWER['power_id'], $c.'-'.$a) ? true :false;
+}
 
 
+
+/**
+ * 生成UUID
+ * @access public
+ * @return string
+ * @author knight
+ */
+
+function create_uuid(){
+
+    $chars = md5(uniqid(mt_rand(), true));
+    $uuid = substr ( $chars, 0, 8 ) . '-'
+        . substr ( $chars, 8, 4 ) . '-'
+        . substr ( $chars, 12, 4 ) . '-'
+        . substr ( $chars, 16, 4 ) . '-'
+        . substr ( $chars, 20, 12 );
+    return $uuid ;
+
+}

@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS `cms_admin` (
 
 INSERT INTO `cms_admin` (`admin_id`, `username`, `password`, `lastloginip`, `lastlogintime`, `email`, `realname`, `status`) VALUES
 (1, 'admin', 'd099d126030d3207ba102efa8e60630a', '0', 1461135752, 'tracywxh0830@126.com', '张三', 1),
-(2, 'singwa', 'a8ea3a23aa715c8772dd5b4a981ba6f4', '0', 1458139801, '', '张三', -1),
-(3, 'singwa', 'a8ea3a23aa715c8772dd5b4a981ba6f4', '0', 0, '', '', -1),
-(4, 'singwa3', '79d4026540fdd95e4a0b627c77e6fa44', '0', 1458144621, '', 'singwa', 1);
+(2, 'victor', 'a8ea3a23aa715c8772dd5b4a981ba6f4', '0', 1458139801, '', '张三', -1),
+(3, 'victor', 'a8ea3a23aa715c8772dd5b4a981ba6f4', '0', 0, '', '', -1),
+(4, 'victor3', '79d4026540fdd95e4a0b627c77e6fa44', '0', 1458144621, '', 'victor', 1);
 
 -- --------------------------------------------------------
 
@@ -228,7 +228,7 @@ INSERT INTO `cms_position_content` (`id`, `position_id`, `title`, `thumb`, `url`
 (30, 3, '重庆美女球迷争芳斗艳', '/upload/2016/03/13/56e51cbd34470.png', NULL, 23, 0, 1, 1457855680, 0),
 (31, 3, '中超-汪嵩世界波制胜 富力客场1-0力擒泰达', '/upload/2016/03/13/56e51fc82b13a.png', NULL, 24, 0, 1, 1457856460, 0),
 (32, 5, '2015劳伦斯国际体坛精彩瞬间', '/upload/2016/03/13/56e5612d525c3.png', 'http://sports.sina.com.cn/laureus/moment2015/', 0, 0, 1, 1457873220, 0),
-(33, 5, 'singwa老师教您如何学PHP', '/upload/2016/03/13/56e56211c68e7.jpg', 'http://t.imooc.com/space/teacher/id/255838', 0, 0, 1, 1457873435, 0);
+(33, 5, 'victor老师教您如何学PHP', '/upload/2016/03/13/56e56211c68e7.jpg', 'http://t.imooc.com/space/teacher/id/255838', 0, 0, 1, 1457873435, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

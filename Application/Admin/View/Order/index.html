@@ -1,0 +1,136 @@
+
+<include file="Index/header" />
+<body>
+
+<div id="wrapper">
+
+    <include file="Index/nav"/>
+
+    <div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=order">订单管理</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i>订单列表
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <form action="/admin.php" method="get">
+                <div class="col-md-8">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">支付类型</span>
+                            <select class="form-control" name="pay_id">
+                                <option value='' >全部</option>
+                                <option value="1" >微信</option>
+                                <option value="2" >支付宝</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">发货状态</span>
+                            <select class="form-control" name="order_status">
+                                <option value='' >全部</option>
+                                <option value="4" >失败</option>
+                                <option value="1" >成功</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="c" value="order"/>
+                    <input type="hidden" name="a" value="index"/>
+                    <div class="input-group">
+                        <input class="form-control" name="order_sn" type="text" value="" placeholder="订单号" />
+                        <span class="input-group-btn">
+                          <button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>订单号</th>
+                            <th>设备ID</th>
+                            <th>设备名称</th>
+                            <th>商品名称</th>
+                            <th>支付方式</th>
+                            <th>支付金额</th>
+                            <th>支付时间</th>
+                            <th>发货状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="orders" id="vo">
+                            <tr>
+                                <td>{$vo.order_id}</td>
+                                <td>{$vo.order_sn}</td>
+                                <td>{$vo.dev_id}</td>
+                                <td>{$vo.devicename}</td>
+                                <td>{$vo.goods_name}</td>
+                                <td>{$vo.pay_name}</td>
+                                <td>{$vo.order_amount}</td>
+                                <td>{$vo.add_time|date="Y-m-d H:i",###}</td>
+                                <td>{$vo.order_status|orderstatus}</td>
+                                <td>
+                                    <span class="sing_cursor glyphicon glyphicon-eye-open" aria-hidden="true" id="singcms-edit" attr-id="{$vo.goods_id}" ></span>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul>
+                            {$pageres}
+                        </ul>
+                    </nav>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+<script>
+    var SCOPE = {
+        'add_url' : '/admin.php?c=goods&a=add',
+        'edit_url' : '/admin.php?c=goods&a=update',
+        'index_url' : '/',
+
+    }
+</script>
+
+<include file="Index/footer" />
+
+
+
+
+
