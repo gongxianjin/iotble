@@ -1,0 +1,79 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+
+    <include file="Index/nav"/>
+<div id="page-wrapper">
+
+    <div class="container-fluid" >
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+
+                    <li class="active">
+                        <i class="fa fa-table"></i>{$nav}
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>姓名</th>
+                            <th>手机</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="adlists" id="adlist">
+                            <tr>
+                                <td>{$adlist.id}</td>
+                                <td>{$adlist.name}</td>
+                                <td>{$adlist.phone}</td>
+                                <td>{$adlist.tm}</td>
+                                <td><span  attr-status="<if condition="$adlist['status'] eq 1">0<else/>1</if>"  attr-id="{$adlist.id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$adlist.status|status}</span></td>
+                                <td>
+                                    <a href="javascript:void(0)" id="singcms-delete"  attr-id="{$adlist.id}"  attr-message="删除">
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                        </volist>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+    var SCOPE = {
+        'set_status_url' : '/admin.php?c=adlist&a=setStatus',
+    }
+</script>
+<include file="Index/footer" />

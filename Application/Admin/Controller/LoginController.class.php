@@ -32,6 +32,11 @@ class LoginController extends Controller {
             return show(0,'验证码错误');
         }
         $ret = D('Admin')->getAdminByUsername($username);
+
+        if($ret['status'] == 0) {
+            return show(0,'该用户正在审核中');
+        }
+
         if(!$ret || $ret['status'] !=1) {
             return show(0,'该用户不存在');
         }

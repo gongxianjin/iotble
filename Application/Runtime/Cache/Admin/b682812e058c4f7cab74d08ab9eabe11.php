@@ -44,12 +44,11 @@
 <div id="wrapper">
 
     <?php
- $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $username != 'admin') { unset($navs[$k]); } } $index = 'index'; ?>
+ $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); $rolename = getRoleName($_SESSION['adminUser']['role_id']); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $rolename == '检测员' || $rolename == '观察员') { unset($navs[$k]); } } $index = 'index'; ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-
     <a class="navbar-brand" >成都先讯管理平台</a>
   </div>
   <!-- Top Menu Items -->
@@ -67,6 +66,21 @@
       </ul>
     </li>
   </ul>
+
+  <ul class="nav navbar-left top-nav">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-bar-chart-o"></i>menu</a>
+      <ul class="dropdown-menu">
+      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i; if(checkOperModule($navo['c'])){ ?>
+      <li <?php echo (getActive($navo["c"])); ?>>
+        <a href="<?php echo (getAdminMenuUrl($navo)); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo ($navo["name"]); ?></a>
+      </li>
+      <?php } endforeach; endif; else: echo "" ;endif; ?>
+      </ul>
+    </li>
+
+  </ul>
+
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav nav_list">
@@ -98,7 +112,6 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=admin">网站管理员</a>
@@ -126,6 +139,7 @@
                             <th>用户名</th>
                             <th>手机号</th>
                             <th>真实姓名</th>
+                            <th>单位</th>
                             <th>用户组</th>
                             <th>最后登录时间</th>
                             <th>状态</th>
@@ -138,6 +152,7 @@
                                 <td><?php echo ($vo["username"]); ?></td>
                                 <td><?php echo ($vo["phone"]); ?></td>
                                 <td><?php echo ($vo["realname"]); ?></td>
+                                <td><?php echo (getCompanyName($vo["company_id"])); ?></td>
                                 <td><?php echo (getRoleName($vo["role_id"])); ?></td>
                                 <td><?php echo (date("Y-m-d H:i",$vo["lastlogintime"])); ?></td>
                                 <td><span attr-status="<?php if($vo['status'] == 1): ?>0<?php else: ?>1<?php endif; ?>"  attr-id="<?php echo ($vo["admin_id"]); ?>" class="sing_cursor singcms-on-off" id="singcms-on-off" ><?php echo (status($vo["status"])); ?></span></td>

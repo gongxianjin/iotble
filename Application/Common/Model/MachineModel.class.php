@@ -10,7 +10,7 @@ class MachineModel extends Model {
 	private $_db = '';
 
 	public function __construct() {
-		$this->_db = M('deviceinfo');
+		$this->_db = M('devicelist');
 	}
    
     public function getMachineByDevicename($devicename='') {
@@ -18,7 +18,7 @@ class MachineModel extends Model {
         return $res;
     }
     public function getMachineById($Id) {
-        $res = $this->_db->where('xc_deviceinfo.id='."'$Id'")
+        $res = $this->_db->where('xc_devicelist.id='."'$Id'")
                          ->find();
         return $res;
     }
@@ -45,19 +45,21 @@ class MachineModel extends Model {
         if(isset($data['devicename']) && $data['devicename'])  {
             $conditions['devicename'] = array('like','%'.$data['devicename'].'%');
         }
-        if(isset($data['id']) && $data['id'])  {
-            $conditions['id'] = $data['id'];
+        if(isset($data['deviceid']) && $data['deviceid'])  {
+            $conditions['deviceid'] = $data['deviceid'];
         }
-        $devicetype = $_GET['devicetype'];
-        if($devicetype) {
-            $conds['devicetype'] = $devicetype;
+        if(isset($data['company_id']) && $data['company_id'])  {
+            $conditions['company_id'] = $data['company_id'];
+        }
+        if(isset($data['admin_id']) && $data['admin_id'])  {
+            $conditions['admin_id'] = $data['admin_id'];
         }
         $offset = ($page - 1) * $pageSize;
-        return $this->_db->join('left join xc_devicetype on xc_devicetype.devicetypeId = xc_deviceinfo.devicetype')
-                ->where($conditions)->order('xc_deviceinfo.devtime desc')
-                ->field('xc_deviceinfo.id,xc_deviceinfo.devicename,xc_devicetype.devicetypeName,xc_deviceinfo.vol_m,xc_deviceinfo.inv,xc_deviceinfo.rssi,xc_deviceinfo.devtime,xc_deviceinfo.devstatus')
-                ->limit($offset,$pageSize)
-                ->select();
+        $res = $this->_db->where($conditions)->order('xc_devicelist.id desc')
+            ->limit($offset,$pageSize)
+            ->select();
+//        dump($this->_db->getLastSql());die;
+        return $res;
     }
 
     public function getMachineCount($data = array()){

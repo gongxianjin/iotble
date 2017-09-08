@@ -47,6 +47,33 @@ $('.singcms-table #singcms-edit').on('click',function(){
 });
 
 /*
+ 二维码模型
+ */
+$('.singcms-table #singcms-qrcode').on('click',function(){
+    var id = $(this).attr('attr-id');
+    var url = SCOPE.qrcode_url + '&id='+id;
+    window.location.href=url;
+});
+
+/*
+ 退款模型
+ */
+$('.singcms-table #singcms-setback').on('click',function(){
+    var id = $(this).attr('attr-id');
+    var url = SCOPE.setback_url + '&id='+id;
+    window.location.href=url;
+});
+
+/*
+ 设置模型
+ */
+$('.singcms-table #singcms-set').on('click',function(){
+    var id = $(this).attr('attr-id');
+    var url = SCOPE.set_url + '&id='+id;
+    window.location.href=url;
+});
+
+/*
     列表模型
  */
 $('.singcms-table #singcms-list').on('click',function(){
@@ -189,3 +216,4 @@ $("#singcms-push").click(function(){
     },"json");
 
 });
+

@@ -46,10 +46,12 @@ class OrderModel extends Model {
             $conditions['order_sn'] = array('like','%'.$data['order_sn'].'%');
         }
         $offset = ($page - 1) * $pageSize;
-        return $this->_db->join('left join xc_deviceinfo on xc_deviceinfo.id = xc_order_info.dev_id')
+        return $this->_db
+            ->join('left join xc_devicelist on xc_devicelist.id = xc_order_info.devicelistId')
+            ->join('left join xc_deviceinfo on xc_deviceinfo.id = xc_devicelist.deviceId')
             ->join('left join xc_order_goods on xc_order_goods.order_id = xc_order_info.order_id')
             ->where($conditions)->order('xc_order_info.order_id desc')
-            ->field('xc_order_info.order_id,xc_order_info.order_sn,xc_order_info.dev_id,xc_deviceinfo.devicename,xc_order_goods.goods_name,xc_order_info.pay_name,xc_order_info.order_amount,xc_order_info.add_time,xc_order_info.order_status')
+            ->field('xc_order_info.order_id,xc_devicelist.deviceId,xc_order_info.order_sn,xc_order_info.devicelistId,xc_deviceinfo.devicename,xc_order_goods.goods_id,xc_order_goods.goods_name,xc_order_info.pay_name,xc_order_info.order_amount,xc_order_info.add_time,xc_order_info.order_status')
             ->limit($offset,$pageSize)
             ->select();
     }
@@ -62,5 +64,12 @@ class OrderModel extends Model {
         return $this->_db->where($conditions)->count();
     }
 
+    public function getOrderSum($data = array()) {
+        $conditions = $data;
+        if(isset($data['order_sn']) && $data['order_sn']) {
+            $conditions['order_sn'] = array('like','%'.$data['order_sn'].'%');
+        }
+        return $this->_db->where($data)->sum('order_amount');
+    }
 
 }

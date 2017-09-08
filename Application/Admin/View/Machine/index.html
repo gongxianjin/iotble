@@ -16,28 +16,31 @@
 
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">货机管理</a>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">分析仪管理</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-table"></i>货机列表
+                        <i class="fa fa-table"></i>分析仪列表
                     </li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
+        <div style="margin:5px 1.4%;margin-top:-12px;">
+            <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
+        </div>
         <div class="row">
             <form action="/admin.php" method="get">
                 <div class="col-md-8">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <span class="input-group-addon">设备号</span>
-                            <input class="form-control" name="id" type="text" value="" placeholder="设备号"/>
+                            <span class="input-group-addon">内置分析仪ID</span>
+                            <input class="form-control" name="deviceid" type="text" value="" placeholder="分析仪ID"/>
                         </div>
                     </div>
                     <input type="hidden" name="c" value="machine"/>
                     <input type="hidden" name="a" value="index"/>
                     <div class="input-group">
-                        <input class="form-control" name="devicename" type="text" value="" placeholder="设备名称" />
+                        <input class="form-control" name="devicename" type="text" value="" placeholder="分析仪名称" />
                         <span class="input-group-btn">
                           <button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
                         </span>
@@ -53,31 +56,35 @@
                     <table class="table table-bordered table-hover singcms-table">
                         <thead>
                         <tr>
-                            <th>设备号</th>
-                            <th>设备名称</th>
-                            <th>机器类型</th>
-                            <th>电源电压</th>
-                            <th>开门监控</th>
-                            <th>信号</th>
-                            <th>最新上送数据时间</th>
-                            <th>网络状况</th>
+                            <th>内置分析仪ID</th>
+                            <th>分析仪名称</th>
+                            <th>测试员</th>
+                            <th>单位</th>
+                            <th>开始日期</th>
+                            <th>结束日期</th>
+                            <th>状态</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <volist name="machines" id="vo">
                             <tr>
-                                <td>{$vo.id}</td>
+                                <td>{$vo.deviceid}</td>
                                 <td>{$vo.devicename}</td>
-                                <td>{$vo.devicetypename}</td>
-                                <td>{$vo.vol_m}</td>
-                                <td>{$vo.inv}</td>
-                                <td>{$vo.rssi}</td>
-                                <td>{$vo.devtime}</td>
-                                <td>{$vo.devstatus|devstatus}</td>
+                                <td>{$vo.admin_id|getAdminName}</td>
+                                <td>{$vo.company_id|getCompanyName}</td>
+                                <td>{$vo.start_time|date="Y-m-d",###}</td>
+                                <td>{$vo.end_time|date="Y-m-d",###}</td>
+                                <if condition="$test_id neq 0">
+                                    <td>{$vo.status|devstatus}</td>
+                                    <else />
+                                    <td><span attr-status="<if condition="$vo['status'] eq 1">0<else/>1</if>"  attr-id="{$vo.id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$vo.status|devstatus}</span></td>
+                                </if>
                                 <td>
-                                    <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$vo.id}" ></span>
-                                    <span class="sing_cursor glyphicon glyphicon-wrench" aria-hidden="true" id="singcms-set" attr-id="{$vo.id}" ></span>
+                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true" id="singcms-list" attr-pid="{$vo.deviceid}"></span>
+                                    <if condition="$test_id eq 0">
+                                        <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$vo.id}" ></span>
+                                    </if>
                                 </td>
                             </tr>
                         </volist>
@@ -108,8 +115,9 @@
     var SCOPE = {
         'add_url' : '/admin.php?c=machine&a=add',
         'edit_url' : '/admin.php?c=machine&a=edit',
+        'list_url' : '/admin.php?c=machine&a=machinelist&deviceid=',
+        'set_status_url' : '/admin.php?c=machine&a=setStatus',
         'index_url' : '/',
-
     }
 </script>
 

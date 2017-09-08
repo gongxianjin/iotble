@@ -27,60 +27,27 @@ class CommonController extends Controller {
 				),
 		),
 
-		//管理员管理
+		//用户管理
 		'admin'=>array(
-				'arlias'=>'管理员管理',
+				'arlias'=>'用户管理',
 				'items'=>array(
-						'index'=>'管理员列表', 'add'=>'添加管理员', 'personal'=>'编辑管理员','setStatus'=>'删除管理员'
+						'index'=>'用户列表', 'add'=>'添加用户', 'personal'=>'编辑用户','setStatus'=>'删除用户'
 				),
 		),
 
-
-		//会员管理
-		'member'=>array(
-			'arlias'=>'会员管理',
-			'items'=>array(
-				'index'=>'会员列表', 'add'=>'添加会员', 'edit'=>'编辑会员','del'=>'删除会员','setStatus'=>'审核状态',
-			),
+		//单位管理
+		'company'=>array(
+				'arlias'=>'单位管理',
+				'items'=>array(
+						'index'=>'单位列表', 'add'=>'添加单位', 'update'=>'编辑单位','del'=>'删除单位'
+				),
 		),
 
-		//货机管理
+		//分析仪管理
 		'machine'=>array(
-				'arlias'=>'货机管理',
+				'arlias'=>'分析仪管理',
 				'items'=>array(
-						'index'=>'货机列表','edit'=>'编辑货机',
-				),
-		),
-
-		//货机类型
-		'devcategory'=>array(
-				'arlias'=>'货机类型',
-				'items'=>array(
-						'index'=>'类型列表','add'=>'添加类型', 'update'=>'编辑类型','del'=>'删除类型'
-				),
-		),
-
-		//商品管理
-		'goods'=>array(
-				'arlias'=>'商品管理',
-				'items'=>array(
-						'index'=>'商品列表','add'=>'添加商品', 'update'=>'编辑商品','del'=>'删除商品'
-				),
-		),
-
-		//地址管理
-		'address'=>array(
-				'arlias'=>'地址管理',
-				'items'=>array(
-						'index'=>'地址列表','add'=>'添加地址', 'update'=>'编辑地址','del'=>'删除地址'
-				),
-		),
-
-		//订单管理
-		'order'=>array(
-				'arlias'=>'订单管理',
-				'items'=>array(
-						'index'=>'订单列表',
+						'index'=>'分析仪列表','add'=>'添加分析仪','edit'=>'编辑分析仪','set'=>'设置分析仪','machinelist'=>'测试数据列表','setStatus'=>'停用分析仪'
 				),
 		),
 
@@ -100,6 +67,14 @@ class CommonController extends Controller {
 				),
 		),
 
+		//数据统计管理
+		'datastatic'=>array(
+				'arlias'=>'数据统计管理',
+				'items'=>array(
+						'index'=>'数据统计列表'
+				),
+		),
+
 	);
 
 	public function __construct() {
@@ -116,7 +91,8 @@ class CommonController extends Controller {
 		if(!$isLogin) {
 			// 跳转到登录页面
 //			$this->redirect('/admin.php?c=login');
-			$this->redirect('admin/login/index');
+//			$this->redirect('admin/login/index');
+			$this->redirect('/admin.php/login');
 		}
 		//检查权限
 		if(!checkOperModule(CONTROLLER_NAME,ACTION_NAME)){

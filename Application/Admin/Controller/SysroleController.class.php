@@ -27,7 +27,20 @@ class SysroleController extends CommonController {
 	 */
 	public function Index(){
 		//查询角色列表
-		$this->sysrole = M('sysrole')->select();
+		$sysrole = M('sysrole')->select();
+		if($sysrole){
+			foreach($sysrole as $keys=>$item){
+				$power_ids = M('role_permission')->where(array('role_id'=>$item['id']))->select();
+				if($power_ids){
+					foreach($power_ids as $item){
+						$power_names = M('power')->find($item['permission_id']);
+						$sysrole[$keys]['power_name'] .= $power_names['c_arlias'].'-'.$power_names['a_arlias'].'|';
+					}
+					$sysrole[$keys]['power_name'] = substr($sysrole[$keys]['power_name'],0,-1);
+				}
+			}
+		}
+		$this->assign('sysrole',$sysrole);
 		$this->display();
 	} 
 	
@@ -44,9 +57,10 @@ class SysroleController extends CommonController {
 					'c_arlias' => $item['c_arlias'],
 					'c_name'=>$item['c_name'],
 					'item' => array(),
+					'ids'=> array(),
 				);
 			}
-			$return[$item['c_name']]['item'][$item['a_name']] = $item['a_arlias'];
+			$return[$item['c_name']]['item'][$item['id']] = $item['a_arlias'];
 		}
 		
 		return $return;
@@ -60,22 +74,25 @@ class SysroleController extends CommonController {
 		if($_POST){
 			$name = $_POST['name'];
 			$power_id = $_POST['power_id'];
-			$power_l='';
-			foreach ($power_id as $k=>$power_i){
-				$power_l .=$power_i.'|';
-			}
-			$power_l=substr($power_l,0,-1);
-			if((!$name) || (!$power_l)) {
+			if((!$name) || (!$power_id)) {
 				return show(0,'提交有误');
 			}
-			$data = array(
-					'name' => $name,
-					'power_id' => $power_l,
+			$role = array(
+					'name' => $name
 			);
 			//添加操作日志
-			$log = '新增权限角色'.$data['name'];
+			$log = '新增权限角色'.$role['name'];
 			$this->addOperLog($log);
-			M('sysrole')->add($data) ? show(1,'新增成功'):show(0,'新增失败');
+			$role_id = M('sysrole')->add($role);
+			//增加
+			foreach($power_id as $k=>$v){
+				$data = array(
+						'role_id' => $role_id,
+						'permission_id' => $v,
+				);
+				M('role_permission')->add($data);
+			}
+			show(1,'新增成功');
 		}else{
 			$power = M('power')->select(array('order'=>'id ASC'));
 			$this->powers = $this->_find_parent($power);
@@ -85,13 +102,27 @@ class SysroleController extends CommonController {
 
 	public function update(){
 		isset($_GET['id']) ? $id = $_GET['id'] : $this->error('非法操作');
-		$this->data = M('sysrole')->where(array('id'=>$id))->find();
-		if(!$this->data){
+		$data = M('sysrole')->where(array('id'=>$id))->find();
+		$power_l = '';
+		if(!$data){
 			$this->error('修改用户信息有误');
 		}
+		$res = M('role_permission')->where(array('role_id'=>$id))->select();
+		if($res){
+			foreach($res as $key=>$item){
+				$powers[$key] = M('power')->find($item['permission_id']);
+			}
+		}
+		if($powers){
+			foreach($powers as $item){
+				$power_l .=$item['c_name'].'-'.$item['id'].'|';
+			}
+		}
+		$data['power_id']=substr($power_l,0,-1);
+		$this->data = $data;
 		$this->cname = $aname = array();
-		$this->cname=explode("|",$this->data['power_id']);
-
+		$this->cname=explode("|",$data['power_id']);
+//		dump($this->cname);die;
 		$return = array();
 		foreach ($this->cname as $v){
 			$ls_l = explode('-', $v);
@@ -102,9 +133,9 @@ class SysroleController extends CommonController {
 			}
 			$return[ $ls_l[0] ][$ls_l[1]] = $ls_l[1];
 		}
-
 		$power = M('power')->select(array('order'=>'id ASC'));
 		$this->powers = $this->_find_parent($power);
+//		dump($this->powers);die;
 		$this->display();
 	}
 
@@ -113,22 +144,43 @@ class SysroleController extends CommonController {
 		isset($_POST['id']) ? $id = $_POST['id'] : $this->error('非法操作');
 		$name = $_POST['name'];
 		$power_id = $_POST['power_id'];
-		$power_l='';
-		foreach ($power_id as $k=>$power_i){
-			$power_l .=$power_i.'|';
-		}
-		$power_l=substr($power_l,0,-1);
-		if((!$name) || (!$power_l)) {
+		$power_ids = implode(',',$power_id);
+		$role_permssions = array();
+		if((!$name) || (!$power_id)) {
 			return show(0,'提交有误');
 		}
-		$data = array(
-				'name' => $name,
-				'power_id' => $power_l,
-		);
+		//减少
+		$res = M('role_permission')->where(array('role_id'=>$id))->select();
+		if($res){
+			foreach($res as $key=>$item){
+				if(!strstr($power_ids,$item['permission_id'])){
+					$role_permssions[$key] = $item['id'];
+				}
+			}
+		}
+		if(!empty($role_permssions)){
+			foreach($role_permssions as $item){
+				M('role_permission')->delete($item);
+			}
+		}
+		//增加
+		foreach($power_id as $k=>$v){
+			$condition['role_id'] = $id;
+			$condition['permission_id'] = $v;
+			$condition['_logic'] = 'and';
+			$rt = M('role_permission')->where($condition)->find();
+			if(empty($rt)){
+				$data = array(
+					'role_id' => $id,
+					'permission_id' => $v,
+				);
+				M('role_permission')->add($data);
+			}
+		}
 		//添加操作日志
-		$log = '更新权限角色'.$data['name'];
+		$log = '更新权限角色';
 		$this->addOperLog($log);
-		M('sysrole')->where('id='.$id)->save($data) ? show(1,'修改成功'):show(0,'修改失败');
+		return show(1,'修改成功');
 	}
 
 	public function Del(){
@@ -136,6 +188,10 @@ class SysroleController extends CommonController {
 		//添加操作日志
 		$log = '删除权限角色'.$id;
 		$this->addOperLog($log);
+		$res = M('role_permission')->where(array('role_id'=>$id))->select();
+		foreach($res as $item){
+			M('role_permission')->delete($item['id']);
+		}
 		// 执行数据更新操作
 		if(M('sysrole')->delete($id)){
 			return show(1, '删除成功');

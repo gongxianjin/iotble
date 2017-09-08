@@ -27,7 +27,7 @@ class IndexController extends CommonController {
          * 生成页面静态化
          */
         if($type == 'buildHtml') {
-            $this->buildHtml('index',HTML_PATH,'Index/index');
+            //$this->buildHtml('index',HTML_PATH,'Index/index');
 
         }else {
             $this->display();

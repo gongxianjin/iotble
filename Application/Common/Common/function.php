@@ -21,14 +21,27 @@ function getMenuType($type) {
 }
 
 function getRoleName($roleid){
+    $roleid = isset($roleid)?$roleid:0;
     $res = M('sysrole')->find($roleid);
-    return $res['name'];
+    return !empty($res['name'])?$res['name']:'';
+}
+
+function getAdminName($admin_id){
+    $admin_id = isset($admin_id)?$admin_id:0;
+    $res = M('admin')->find($admin_id);
+    return !empty($res['username'])?$res['username']:'';
+}
+
+function getCompanyName($company_id){
+    $company_id = isset($company_id)?$company_id:0;
+    $res = M('company')->find($company_id);
+    return !empty($res['company_name'])?$res['company_name']:'';
 }
 
 function getMemberRoleName($roleid){
     if($roleid){
-        $res = M('role')->find($roleid);
-        return $res['role_name'];
+        $res = M('auth_group')->find($roleid);
+        return $res['title'];
     }else{
         return false;
     }
@@ -45,6 +58,13 @@ function status($status) {
     return $str;
 }
 
+function format_nums($num) {
+    if($num) {
+        $nums = number_format($num,1);
+    }
+    return $nums;
+}
+
 function devstatus($status) {
     if($status == 0) {
         $str = '离线';
@@ -54,13 +74,42 @@ function devstatus($status) {
     return $str;
 }
 
+
+function devrssi($rssi){
+    if($rssi <= 0){
+        $str = '<span style="background: url(\'Public/images/signal00.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }elseif($rssi < 10){
+        $str = '<span style="background: url(\'Public/images/signal01.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }elseif($rssi < 16){
+        $str = '<span style="background: url(\'Public/images/signal02.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }elseif($rssi < 21){
+        $str = '<span style="background: url(\'Public/images/signal03.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }elseif($rssi < 26){
+        $str = '<span style="background: url(\'Public/images/signal04.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }else{
+        $str = '<span style="background: url(\'Public/images/signal05.png\');display: inline-block;height: 15px;width: 60%;"></span>';
+    }
+    return $str;
+}
+
+function invstatus($inv){
+    if($inv == 1) {
+        $str = '<span style="color:red">已开门</span>';
+    }else{
+        $str = "关闭";
+    }
+    return $str;
+}
+
 function orderstatus($status) {
     if($status == 1) {
         $str = '成功';
-    }elseif($status == 4) {
-        $str = '失败';
+    }elseif($status == 2) {
+        $str = '<span style="color:red">待退款</span>';
+    }elseif($status == 3){
+        $str = '退款完成';
     }else{
-        $str = "无";
+        $str = "未完成";
     }
     return $str;
 }
@@ -165,14 +214,26 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true)
 function checkOperModule($c, $a='index'){
     if(!$c || !$a) return false;
     $ingnore_controller = array('Index');
-    $ingnore_action = array('updateRun','select', 'order','save','listorder');
+    $ingnore_action = array('updateRun','select', 'order','save','listorder','regions','qrcode');
     if(in_array($c, $ingnore_controller) || in_array($a, $ingnore_action)) return true;
 //		if($_SESSION['SADMIN_ID']['admin_id'] ==  1) return true;
     static $G_POWER;
+    $power_l='';
     if(!$G_POWER){
-        $G_POWER = M('sysrole')->find($_SESSION['adminUser']['role_id']);
+        $res = M('role_permission')->where(array('role_id'=>$_SESSION['adminUser']['role_id']))->select();
+        if($res){
+            foreach($res as $key=>$item){
+                $powers[$key] = M('power')->find($item['permission_id']);
+            }
+        }
+        if($powers){
+            foreach($powers as $item){
+                $power_l .=$item['c_name'].'-'.$item['a_name'].'|';
+            }
+        }
+        $G_POWER=substr($power_l,0,-1);
     }
-    return $G_POWER && stristr($G_POWER['power_id'], $c.'-'.$a) ? true :false;
+    return $G_POWER && stristr($G_POWER, $c.'-'.$a) ? true :false;
 }
 
 

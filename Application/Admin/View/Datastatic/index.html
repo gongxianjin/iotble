@@ -1,0 +1,124 @@
+<include file="Index/header" />
+<body>
+
+<div id="wrapper">
+
+    <include file="Index/nav"/>
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div id="main" style="height:400px"></div>
+
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+<!-- Morris Charts JavaScript -->
+
+</div>
+<!-- ECharts单文件引入 -->
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+
+    var tmp = new Array();
+    tmp = <?php echo json_encode($line_one)?>;
+    initChart(tmp);
+    function initChart(tmp) {
+        var dates = [];
+        var pass = [];
+        var dev = [];
+        var json = eval(tmp);
+        for (var i = 0; i<json.length; i++) {
+            var time_t = json[i]['historytime'];
+            dates.push(time_t);
+            pass.push(json[i]['pass']);
+        } 
+        dev.push(json[0]['deviceid']);
+		 
+        // 使用
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                    'echarts/chart/line'
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('main'));
+
+                    var option = {
+                        title: {
+                            text: '人数统计',
+                            subtext:dev
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['设备人数统计']
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                mark: {show: true},
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
+                            }
+                        },
+                        xAxis: [
+                            {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: dates
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                axisLabel: {
+                                    formatter: '{value} 人'
+                                }
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '设备人数统计',
+                                type: 'line',
+                                data:  pass,
+                                markPoint: {
+                                    data: [
+                                        {type: 'max', name: '最大值'},
+                                        {type: 'min', name: '最小值'}
+                                    ]
+                                },
+                                markLine: {
+                                    data: [
+                                        {type: 'average', name: '平均值'}
+                                    ]
+                                }
+                            },
+                        ]
+                    };
+
+                    // 为echarts对象加载数据
+                    myChart.setOption(option);
+                }
+        );
+    }
+</script>
+<include file="Index/footer" />

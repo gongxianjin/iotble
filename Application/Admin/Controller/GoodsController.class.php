@@ -19,7 +19,6 @@ class GoodsController extends CommonController {
         $pageSize = 10;
 
         $goods = D('Goods')->getGoods($conds,$page,$pageSize);
-//        dump($goods);die;
         $count = D("Goods")->getGoodsCount($conds);
         $res  =  new \Think\Page($count,$pageSize);
         $pageres = $res->show();
@@ -45,6 +44,15 @@ class GoodsController extends CommonController {
         $data['shop_price'] = $_POST['shop_price'];
         $data['market_price'] = $_POST['shop_price'];
         $data['goods_img'] = $_POST['goods_img'];
+        //生成缩略图
+        $img = new \Think\Image();
+        //打开图片
+        $img->open(str_replace('\\','/',dirname(dirname(dirname(dirname(__FILE__))))).'/'.$data['goods_img']);
+        //生成
+        $img->thumb(200,300);
+        //保存
+        $data['goods_thumb'] = str_replace('.JPG','_small.JPG',$data['goods_img']);
+        $img->save(str_replace('\\','/',dirname(dirname(dirname(dirname(__FILE__))))).'/'.$data['goods_thumb']);
         //添加操作日志
         $log = '编辑商品'.$data['goods_name'];
         $this->addOperLog($log);
@@ -75,6 +83,15 @@ class GoodsController extends CommonController {
                 'goods_img' => $_POST['goods_img'],
                 'add_time' => time()
             );
+            //生成缩略图
+            $img = new \Think\Image();
+            //打开图片
+            $img->open(str_replace('\\','/',dirname(dirname(dirname(dirname(__FILE__))))).'/'.$data['goods_img']);
+            //生成
+            $img->thumb(200,300);
+            //保存
+            $data['goods_thumb'] = str_replace('.JPG','_small.JPG',$data['goods_img']);
+            $img->save(str_replace('\\','/',dirname(dirname(dirname(dirname(__FILE__))))).'/'.$data['goods_thumb']);
             //添加操作日志
             $log = '新增商品'.$data['goods_name'];
             $this->addOperLog($log);

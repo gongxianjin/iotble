@@ -56,6 +56,19 @@
                             <input type="text" class="form-control" name="phone" id="inputPassword2" placeholder="请填写手机号">
                         </div>
                     </div>
+                    <if condition="$_SESSION['adminUser']['company_id'] eq 0">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">单位:</label>
+                        <select class="btn btn-default" name="company_id" style="margin-left: 14px;">
+                            <option value=''>请选择单位</option>
+                            <foreach  name="company" item="v">
+                                <option value="{$v.company_id}">{$v.company_name}</option>
+                            </foreach>
+                        </select>
+                    </div>
+                    <else />
+                        <input type="hidden" name="company_id" value="{$_SESSION['adminUser']['company_id']}"/>
+                    </if>
                     <div class="form-group">
                         <label  class="col-sm-2 control-label">用户组:</label>
                         <select class="btn btn-default" name="role_id" style="margin-left: 14px;">

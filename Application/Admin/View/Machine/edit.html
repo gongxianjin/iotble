@@ -2,19 +2,15 @@
 <body>
 
 <div id="wrapper">
-
     <include file="Index/nav"/>
 <div id="page-wrapper">
-
 	<div class="container-fluid">
-
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
-
 				<ol class="breadcrumb">
 					<li>
-						<i class="fa fa-dashboard"></i>  <a href="javascript:void(0)">货机管理</a>
+						<i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">分析仪管理</a>
 					</li>
 					<li class="active">
 						<i class="fa fa-edit"></i> 修改
@@ -29,38 +25,52 @@
 
 				<form class="form-horizontal" id="singcms-form">
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">设备名称:</label>
+						<label  class="col-sm-2 control-label">内置分析仪ID:</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" name="devicename" id="inputPassword1" placeholder="" value="{$vo.devicename}">
+							<input type="text" name="deviceid" class="form-control" id="inputname0" placeholder="" value="{$vo.deviceid}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">设备类型:</label>
-						<select class="btn btn-default" name="devicetypeid" style="margin-left: 14px;">
-							<option value=''>请选择类型</option>
-							<foreach  name="devicetype" item="v">
-								<option value="{$v.devicetypeid}" <if condition="$vo.devicetype eq $v['devicetypeid']">selected="selected"</if> >{$v.devicetypename}</option>
+						<label for="inputname1" class="col-sm-2 control-label">分析仪名称:</label>
+						<div class="col-sm-5">
+							<input type="text" name="devicename" class="form-control" id="inputname1" placeholder="" value="{$vo.devicename}">
+						</div>
+					</div>
+					<if condition="$_SESSION['adminUser']['company_id'] eq 0">
+						<div class="form-group">
+							<label  class="col-sm-2 control-label">单位:</label>
+							<select class="btn btn-default" name="company_id" style="margin-left: 14px;">
+								<option value=''>请选择单位</option>
+								<foreach  name="company" item="v">
+									<option value="{$v.company_id}"  <if condition="$vo.company_id eq $v['company_id']">selected="selected"</if> >{$v.company_name}</option>
+								</foreach>
+							</select>
+						</div>
+					<else />
+						<input type="hidden" name="company_id" value="{$_SESSION['adminUser']['company_id']}"/>
+					</if>
+					<div class="form-group">
+						<label  class="col-sm-2 control-label">测试员:</label>
+						<select class="btn btn-default" name="admin_id" style="margin-left: 14px;">
+							<option value=''>请选择测试员</option>
+							<foreach  name="admin" item="v">
+								<option value="{$v.admin_id}" <if condition="$vo.admin_id eq $v['admin_id']">selected="selected"</if>>{$v.username}</option>
 							</foreach>
 						</select>
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">商品:</label>
-						<select class="btn btn-default" name="goods_id" style="margin-left: 14px;">
-							<option value=''>请选择商品</option>
-							<foreach  name="goods" item="v">
-							<option value="{$v.goods_id}" <if condition="$vo.goods_id eq $v['goods_id']">selected="selected"</if> >{$v.goods_name}</option>
-							</foreach>
-						</select>
+						<label for="inputname0" class="col-sm-2 control-label">开始日期:</label>
+						<div class="col-sm-5">
+							<input type="text" class="laydate laydate-icon" size="17" name="begin_time" value="{$vo.start_time|date="Y-m-d",###}" placeholder="" onclick="laydate()">
+						</div>
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">会员:</label>
-						<select class="btn btn-default" name="user_id" style="margin-left: 14px;">
-							<option value=''>请选择类型</option>
-							<foreach  name="users" item="v">
-								<option value="{$v.user_id}" <if condition="$vo.userid eq $v['user_id']">selected="selected"</if> >{$v.username}</option>
-							</foreach>
-						</select>
+						<label for="inputname0" class="col-sm-2 control-label">结束日期:</label>
+						<div class="col-sm-5">
+							<input type="text" class="laydate laydate-icon" size="17" name="end_time" value="{$vo.end_time|date="Y-m-d",###}" placeholder="" onclick="laydate()">
+						</div>
 					</div>
+
 					<input type="hidden" name="dev_id" value="{$vo.id}"/>
 
 					<div class="form-group">
@@ -69,7 +79,6 @@
 						</div>
 					</div>
 				</form>
-
 
 			</div>
 
@@ -83,12 +92,13 @@
 <!-- /#page-wrapper -->
 
 </div>
+<script src="/Public/js/laydate-v1.1/laydate/laydate.js"></script>
 <script>
 	var SCOPE = {
 		'save_url' : '/admin.php?c=machine&a=save',
-		'jump_url' : '',
+		'jump_url' : '/admin.php?c=machine&a=index',
 	};
-
+	laydate.skin('huanglv');
 </script>
 <!-- /#wrapper -->
 <script type="text/javascript" src="/Public/js/admin/form.js"></script>

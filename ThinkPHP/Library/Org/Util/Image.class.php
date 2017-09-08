@@ -103,7 +103,7 @@ Class Image {
 		$fn = C('VERIFY_FUNC');
 
 		//创建画布图像
-		$verify = imagecreatetruecolor($width, $height);
+		$verify = imagecreatetruecolor($width, $height); 
 		//画布背景色
 		$rgb = self::colorTrans($bgColor);
 		$color = imagecolorallocate($verify, $rgb['red'], $rgb['green'], $rgb['blue']);

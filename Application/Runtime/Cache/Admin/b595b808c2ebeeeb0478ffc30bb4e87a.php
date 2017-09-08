@@ -43,12 +43,11 @@
 <div id="wrapper">
 
     <?php
- $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $username != 'admin') { unset($navs[$k]); } } $index = 'index'; ?>
+ $navs = D("Menu")->getAdminMenus(); $username = getLoginUsername(); $rolename = getRoleName($_SESSION['adminUser']['role_id']); foreach($navs as $k=>$v) { if($v['c'] == 'admin' && $rolename == '检测员' || $rolename == '观察员') { unset($navs[$k]); } } $index = 'index'; ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-
     <a class="navbar-brand" >成都先讯管理平台</a>
   </div>
   <!-- Top Menu Items -->
@@ -66,6 +65,21 @@
       </ul>
     </li>
   </ul>
+
+  <ul class="nav navbar-left top-nav">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-bar-chart-o"></i>menu</a>
+      <ul class="dropdown-menu">
+      <?php if(is_array($navs)): $i = 0; $__LIST__ = $navs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$navo): $mod = ($i % 2 );++$i; if(checkOperModule($navo['c'])){ ?>
+      <li <?php echo (getActive($navo["c"])); ?>>
+        <a href="<?php echo (getAdminMenuUrl($navo)); ?>"><i class="fa fa-fw fa-bar-chart-o"></i> <?php echo ($navo["name"]); ?></a>
+      </li>
+      <?php } endforeach; endif; else: echo "" ;endif; ?>
+      </ul>
+    </li>
+
+  </ul>
+
   <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav nav_list">
@@ -124,11 +138,11 @@
                         </div>
                     </div>
                     
-                        <div class="panel-footer">
-                            <span class="pull-left"></span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
+                    <div class="panel-footer">
+                        <span class="pull-left"></span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
                     
                 </div>
             </div>
@@ -140,12 +154,12 @@
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($newscount); ?></div>
-                                <div>文章数量</div>
+                                <!--<div class="huge"><?php echo ($ordersum); ?>/<?php echo ($ordercount); ?></div>-->
+                                <div>销售额(元)/销售量(件)</div>
                             </div>
                         </div>
                     </div>
-                    <a href="/admin.php?c=content&a=index">
+                    <a href="/admin.php?c=order&a=index">
                         <div class="panel-footer">
                             <span class="pull-left">查看</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -162,16 +176,16 @@
                                 <i class="fa glyphicon glyphicon-asterisk  fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($news["count"]); ?></div>
-                                <div>文章最大阅读数</div>
+                                <!--<div class="huge"><?php echo ($orderbacksum); ?></div>-->
+                                <div>退款金额(元)</div>
                             </div>
                         </div>
                     </div>
-                    <a target="_blank" href="/index.php?c=detail&id=<?php echo ($news["news_id"]); ?>">
+                    <a href="/admin.php?c=order&a=index">
                         <div class="panel-footer">
-                            <span class="pull-left"></span>
+                            <span class="pull-left">查看</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"><?php echo ($news["title"]); ?></div>
+                            <div class="clearfix"></div>
                         </div>
                     </a>
                 </div>
@@ -184,12 +198,12 @@
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo ($positioncount); ?></div>
-                                <div>推荐位数</div>
+                                <!--<div class="huge"><?php echo ($maxordergoods["goods_name"]); ?></div>-->
+                                <div>热销商品</div>
                             </div>
                         </div>
                     </div>
-                    <a href="/admin.php?c=position">
+                    <a href="/admin.php?c=goods">
                         <div class="panel-footer">
                             <span class="pull-left">查看</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

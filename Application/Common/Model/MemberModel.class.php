@@ -18,9 +18,9 @@ class MemberModel extends Model {
         return $res;
     }
     public function getMemberByUserId($userId=0) {
-        $res = $this->_db->join('left join xc_user_role on xc_user_role.user_id = xc_user.user_id')
+        $res = $this->_db->join('left join xc_auth_group_access on xc_auth_group_access.uid = xc_user.user_id')
                          ->where('xc_user.user_id='.$userId)
-                         ->field('xc_user.user_id,xc_user.username,xc_user.phone,xc_user.status,xc_user_role.role_id,xc_user.reg_time,xc_user.last_login')
+                         ->field('xc_user.user_id,xc_user.username,xc_user.phone,xc_user.status,xc_auth_group_access.group_id,xc_user.reg_time,xc_user.last_login')
                          ->find();
         return $res;
     }
@@ -32,7 +32,15 @@ class MemberModel extends Model {
         if(!$data || !is_array($data)) {
             throw_exception('更新的数据不合法');
         }
-        M('user_role')->where('user_id='.$id)->save(array('role_id'=>$data['role_id']));
+        //查找该用户是否管理
+        $res = M('auth_group_access')->where('uid='.$id)->find();
+        if($res){
+            M('auth_group_access')->where('uid='.$id)->save(array('group_id'=>$data['role_id']));
+        }else{
+            if($data['role_id']){
+                M('auth_group_access')->add(array('group_id'=>$data['role_id'],'uid'=>$id));
+            }
+        }
         //更新角色关联表
         unset($data['role_id']);
         return $this->_db->where('user_id='.$id)->save($data); // 根据条件更新记录
@@ -52,9 +60,9 @@ class MemberModel extends Model {
         }
         $conditions['status'] = array('neq',-1);
         $offset = ($page - 1) * $pageSize;
-        return $this->_db->join('left join xc_user_role on xc_user_role.user_id = xc_user.user_id')
+        return $this->_db->join('left join xc_auth_group_access on xc_auth_group_access.uid = xc_user.user_id')
                 ->where($conditions)->order('xc_user.user_id desc')
-                ->field('xc_user.user_id,xc_user.username,xc_user.phone,xc_user.status,xc_user_role.role_id,xc_user.reg_time,xc_user.last_login')
+                ->field('xc_user.user_id,xc_user.username,xc_user.phone,xc_user.status,xc_auth_group_access.group_id,xc_user.reg_time,xc_user.last_login')
                 ->limit($offset,$pageSize)
                 ->select();
     }

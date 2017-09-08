@@ -7,8 +7,7 @@
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
-// +----------------------------------------------------------------------
-
+// +---------------------------------------------------------------------- 
 // 应用入口文件
 
 // 检测PHP环境
@@ -19,7 +18,7 @@ define('APP_DEBUG',True);
 define('HTML_PATH', './');
 // 定义应用目录
 define('APP_PATH','./Application/');
-
+header("location:www.xcentiot.com/index.html");
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 

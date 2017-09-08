@@ -23,7 +23,6 @@ class AdminModel extends Model {
     }
 
     public function updateByAdminId($id, $data) {
-
         if(!$id || !is_numeric($id)) {
             throw_exception("ID不合法");
         }
@@ -40,10 +39,17 @@ class AdminModel extends Model {
         return $this->_db->add($data);
     }
 
-    public function getAdmins() {
-        $data = array(
-            'status' => array('neq',-1),
-        );
+    public function getAdmins($company_id) {
+        if($company_id){
+            $data = array(
+                'status' => array('neq',-1),
+                'company_id' => array('eq',$company_id),
+            );
+        }else{
+            $data = array(
+                'status' => array('neq',-1),
+            );
+        }
         return $this->_db->where($data)->order('admin_id desc')->select();
     }
     /**

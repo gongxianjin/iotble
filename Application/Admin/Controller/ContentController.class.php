@@ -37,6 +37,7 @@ class ContentController extends CommonController {
         $this->assign('webSiteMenu',D("Menu")->getBarMenus());
         $this->display();
     }
+
     public function add(){
         if($_POST) {
             if(!isset($_POST['title']) || !$_POST['title']) {

@@ -80,6 +80,4 @@ class GoodsModel extends Model {
         return  $this->_db->where('id='.$id)->save($data); // 根据条件更新记录
     }
 
-
-
 }

@@ -8,9 +8,8 @@ use Think\Exception;
 
 class AdminController extends CommonController {
 
-
     public function index() {
-        $admins = D('Admin')->getAdmins();
+        $admins = D('Admin')->getAdmins($_SESSION['adminUser']['company_id']);
         $this->assign('admins', $admins);
         $this->display();
     }
@@ -33,13 +32,22 @@ class AdminController extends CommonController {
             // 新增
             $id = D("Admin")->insert($_POST);
             if(!$id) {
-                return show(0, '新增失败');
+                return show(0, '新增失败!');
             }
-            $this->addOperLog('添加管理员'.$admin['username']);
+            $this->addOperLog('添加用户'.$admin['username']);
             return show(1, '新增成功');
         }
-        $sys = M('sysrole')->select();
+        if($_SESSION['adminUser']['company_id'] == 0){
+            $sys = M('sysrole')->select();
+        }else{
+            $data = array(
+                'name' => array('in','检测员,观察员'),
+            );
+            $sys = M('sysrole')->where($data)->select();
+        }
+        $company = M('company')->select();
         $this->assign('sys',$sys);
+        $this->assign('company',$company);
         $this->display();
     }
 

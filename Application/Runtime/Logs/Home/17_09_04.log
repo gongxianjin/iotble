@@ -1,0 +1,66 @@
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/23/58fc1f4483345.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/26/590041c1f04a5.JPG
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/26/59003b9352ac3.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/26/59003b1aabcd7.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/21/58f96288e58a2.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2016/03/13/56e51fc82b13a.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2017/04/26/5900694aed5cf.JPG
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2016/03/13/56e519a185c93.png
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.065004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.065004s ]
+ERR: 无法加载控制器:404
+
+[ 2017-09-04T18:24:57+08:00 ] 127.0.0.1 /upload/2016/03/13/56e51b6ac8ce2.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-09-04T18:24:58+08:00 ] 127.0.0.1 /index.php?c=index&a=getCount
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with Think\Controller::error($message = '', $jumpUrl = '', $ajax = false) F:\AppServ\www\iotble\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
+NOTIC: [2048] Declaration of Common\Model\NewsModel::find() should be compatible with Think\Model::find($options = Array) F:\AppServ\www\iotble\trunk\www\Application\Common\Model\NewsModel.class.php 第 9 行.
+ERR: 1146:Table 'iotble.xc_news' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `xc_news`
+

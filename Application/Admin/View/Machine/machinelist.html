@@ -1,0 +1,124 @@
+
+<include file="Index/header" />
+<body>
+
+<div id="wrapper">
+
+    <include file="Index/nav"/>
+
+    <div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">货机管理</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i>货道列表
+                    </li>
+                    <li>
+                        <span style="color:red">{$vo.devstatus|devstatus}</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">设备号</span>
+                        <input class="form-control" name="id" type="text" value="{$vo.id}" disabled/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">设备名称</span>
+                        <input class="form-control" name="id" type="text" value="{$vo.devicename}" disabled/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">最新上送数据时间</span>
+                    <input class="form-control" name="id" type="text" value="{$vo.devtime}" disabled/>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>货道</th>
+                            <th>商品名称</th>
+                            <th>商品库存(个)</th>
+                            <th>货道容量(个)</th>
+                            <th>商品价格(元)</th>
+                            <th>图片</th>
+                            <th>预警(个)</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="machinelist" id="vo" key="k">
+                            <tr>
+                                <td>{$vo.id}</td>
+                                <td>货道{$vo.lane}</td>
+                                <td>{$vo.goods_name}</td>
+                                <td>{$vo.sto}</td>
+                                <td>{$vo.max_sto}</td>
+                                <td>{$vo.shop_price}</td>
+                                <td>{$vo.goods_img|isThumb}</td>
+                                <td>{$vo.alarm_sto}</td>
+                                <td>
+                                    <span class="sing_cursor glyphicon glyphicon-wrench" aria-hidden="true" id="singcms-set" attr-id="{$vo.id}" ></span>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul >
+                            {$pageres}
+                        </ul>
+                    </nav>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+<script>
+    var SCOPE = {
+        'set_url' : '/admin.php?c=machine&a=set',
+        'index_url' : '/',
+    }
+</script>
+
+<include file="Index/footer" />
+
+
+
+
+
