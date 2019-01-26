@@ -1,9 +1,0 @@
-[ 2017-07-14T10:05:20+08:00 ] 127.0.0.1 /index.php
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000813s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001025s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001106s ]
-NOTIC: [2048] Declaration of Home\Controller\CommonController::error() should be compatible with that of Think\Controller::error() F:\AppServ\www\iotcab\trunk\www\Application\Home\Controller\CommonController.class.php 第 24 行.
-

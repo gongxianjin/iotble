@@ -3,14 +3,14 @@ namespace Common\Model;
 use Think\Model;
 
 /**
- * 货道操作
+ * 测试数据操作
  * @author  victor
  */
 class MachinelistModel extends Model {
 	private $_db = '';
 
 	public function __construct() {
-		$this->_db = M('devicelist');
+		$this->_db = M('deviceinfo');
 	}
    
     public function getMachinelistByDeviceId($deviceId='') {
@@ -27,8 +27,7 @@ class MachinelistModel extends Model {
         if(!$id) {
             throw_exception("ID不合法");
         }
-        if(!$data || !is_array($data)) {
-            throw_exception('更新的数据不合法');
+        if(!$data || !is_array($data)) {            throw_exception('更新的数据不合法');
         }
         return $this->_db->where('id='."'$id'")->save($data); // 根据条件更新记录
     }
@@ -42,25 +41,26 @@ class MachinelistModel extends Model {
 
     public function getMachinelist($data,$page,$pageSize=10) {
         $conditions = $data;
-        if(isset($data['devicename']) && $data['devicename'])  {
-            $conditions['devicename'] = array('like','%'.$data['devicename'].'%');
-        }
         if(isset($data['deviceid']) && $data['deviceid'])  {
             $conditions['deviceid'] = $data['deviceid'];
         }
+        if(isset($data['begin_time']) && $data['begin_time']){
+            $conditions['time'] = array('egt',$data['begin_time']);
+        }
+        if(isset($data['end_time']) && $data['end_time']){
+            $conditions['time'] = array('elt',$data['end_time']);
+        }
+        if(isset($data['begin_time']) && $data['begin_time'] && isset($data['end_time']) && $data['end_time']){
+            $conditions['time'] = array('between',array($data['begin_time'],$data['end_time']));
+        }
         $offset = ($page - 1) * $pageSize;
-        return $this->_db->join('left join xc_goods on xc_devicelist.goods_id = xc_goods.goods_id')
-                ->where($conditions)->order('xc_devicelist.time desc')
-                ->field('xc_devicelist.id,xc_devicelist.lane,xc_devicelist.deviceId,xc_goods.goods_name,xc_goods.shop_price,xc_goods.goods_img,xc_devicelist.alarm_sto,xc_devicelist.sto,xc_devicelist.max_sto,xc_devicelist.status,xc_devicelist.time')
+        return $this->_db->where($conditions)->order('time desc')
                 ->limit($offset,$pageSize)
                 ->select();
     }
 
     public function getMachinelistCount($data = array()){
         $conditions = $data;
-        if(isset($data['devicename']) && $data['devicename']) {
-            $conditions['devicename'] = array('like','%'.$data['devicename'].'%');
-        }
         if(isset($data['deviceid']) && $data['deviceid']){
             $conditions['deviceid'] = $data['deviceid'];
         }

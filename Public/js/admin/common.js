@@ -6,6 +6,14 @@ $("#button-add").click(function(){
     window.location.href=url;
 });
 
+/**
+ * 添加项目按钮操作
+ */
+$("#button-additem").click(function(){
+    var id = $(this).attr('attr-id');
+    var url = SCOPE.additem_url + '&deviceid='+id;
+    window.location.href=url;
+});
 
 /**
  * 初始化按钮操作
@@ -79,6 +87,16 @@ $('.singcms-table #singcms-set').on('click',function(){
 $('.singcms-table #singcms-list').on('click',function(){
     var pid = $(this).attr('attr-pid');
     var url = SCOPE.list_url+pid;
+    window.location.href=url;
+});
+
+
+/*
+ 列表模型
+ */
+$('.singcms-table #singcms-alarm').on('click',function(){
+    var pid = $(this).attr('attr-pid');
+    var url = SCOPE.alarm_url+pid;
     window.location.href=url;
 });
 

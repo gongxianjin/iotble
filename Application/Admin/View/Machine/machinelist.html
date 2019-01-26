@@ -13,44 +13,47 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">货机管理</a>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">分析仪管理</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-table"></i>货道列表
-                    </li>
-                    <li>
-                        <span style="color:red">{$vo.devstatus|devstatus}</span>
+                        <i class="fa fa-table"></i>测试数据列表/分析仪<span style="color:red;">{$mechine.deviceid}</span>
                     </li>
                 </ol>
             </div>
         </div>
 
         <!-- /.row -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">设备号</span>
-                        <input class="form-control" name="id" type="text" value="{$vo.id}" disabled/>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">设备名称</span>
-                        <input class="form-control" name="id" type="text" value="{$vo.devicename}" disabled/>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-addon">最新上送数据时间</span>
-                    <input class="form-control" name="id" type="text" value="{$vo.devtime}" disabled/>
-                </div>
-            </div>
-            </div>
+        <div style="margin:5px 1.4%;margin-top:-12px;">
+            <button  id="button-additem" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" attr-id="{$mechine.deviceid}"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>添加 </button>
         </div>
+        <!--<div class="row">-->
+            <!--<form action="/admin.php" method="get">-->
+                <!--<div class="col-md-8">-->
+                    <!--<input type="hidden" name="c" value="machine"/>-->
+                    <!--<input type="hidden" name="a" value="machinelist"/>-->
+                    <!--<input type="hidden" name="deviceid" value="{$mechine.deviceid}"/>-->
+                    <!--<div class="col-md-4">-->
+                        <!--<div class="input-group">-->
+                            <!--<input type="text" class="laydate laydate-icon" size="17" name="begin_time" value="" placeholder="开始日期" onclick="laydate()">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-4">-->
+                        <!--<div class="input-group">-->
+                            <!--<input type="text" class="laydate laydate-icon" size="17" name="end_time" value="" placeholder="结束日期" onclick="laydate()">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="input-group">-->
+                        <!--<input class="form-control" name="address" type="text" value="" placeholder="地址"/>-->
+                        <!--<span class="input-group-btn">-->
+                          <!--<button id="sub_data" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row">
             <div class="col-lg-6">
                 <h3></h3>
@@ -60,13 +63,14 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>货道</th>
-                            <th>商品名称</th>
-                            <th>商品库存(个)</th>
-                            <th>货道容量(个)</th>
-                            <th>商品价格(元)</th>
-                            <th>图片</th>
-                            <th>预警(个)</th>
+                            <th>标识ID</th>
+                            <th>测试选项</th>
+                            <th>单位</th>
+                            <th>测试结果</th>
+                            <th>报警值</th>
+                            <th>地点号</th>
+                            <th>地点</th>
+                            <th>时间</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -74,13 +78,14 @@
                         <volist name="machinelist" id="vo" key="k">
                             <tr>
                                 <td>{$vo.id}</td>
-                                <td>货道{$vo.lane}</td>
-                                <td>{$vo.goods_name}</td>
-                                <td>{$vo.sto}</td>
-                                <td>{$vo.max_sto}</td>
-                                <td>{$vo.shop_price}</td>
-                                <td>{$vo.goods_img|isThumb}</td>
-                                <td>{$vo.alarm_sto}</td>
+                                <td>{$vo.itemid}</td>
+                                <td>{$vo.item}</td>
+                                <td>{$vo.unit}</td>
+                                <td>{$vo.result}</td>
+                                <td>{$vo.alarm}</td>
+                                <td>{$vo.pond_num}</td>
+                                <td>{$vo.address}</td>
+                                <td>{$vo.time|date="Y-m-d H:i",###}</td>
                                 <td>
                                     <span class="sing_cursor glyphicon glyphicon-wrench" aria-hidden="true" id="singcms-set" attr-id="{$vo.id}" ></span>
                                 </td>
@@ -89,12 +94,11 @@
                         </tbody>
                     </table>
                     <nav>
-                        <ul >
+                        <ul>
                             {$pageres}
                         </ul>
                     </nav>
                     </form>
-
                 </div>
             </div>
 
@@ -109,11 +113,14 @@
 </div>
 <!-- /#wrapper -->
 <!-- Morris Charts JavaScript -->
+<script src="/Public/js/laydate-v1.1/laydate/laydate.js"></script>
 <script>
     var SCOPE = {
+        'additem_url' : '/admin.php?c=machine&a=additem',
         'set_url' : '/admin.php?c=machine&a=set',
-        'index_url' : '/',
+        'index_url' : '/admin.php?c=machine&a=index',
     }
+    laydate.skin('huanglv');
 </script>
 
 <include file="Index/footer" />

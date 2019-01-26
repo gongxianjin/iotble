@@ -44,6 +44,15 @@ class CompanyController extends CommonController {
             $province   = !empty($_POST['province'])   ? intval($_POST['province'])   : 0;
             $city = !empty($_POST['city']) ? intval($_POST['city']) : 0;
             $district = !empty($_POST['district']) ? intval($_POST['district']) : 0;
+            if(!$province) {
+                return show(0,'请选择省');
+            }
+            if(!$city) {
+                return show(0,'请选择市');
+            }
+            if(!$district) {
+                return show(0,'请选择区');
+            }
             if(!isset($_POST['address']) || !$_POST['address']) {
                 return show(0,'详细地址不能为空');
             }
@@ -107,6 +116,7 @@ class CompanyController extends CommonController {
         $lat = !empty($_POST['lat']) ? intval($_POST['lat']) : 0;
         $lng = !empty($_POST['lng']) ? intval($_POST['lng']) : 0;
         $data = array(
+            'company_name'=>$_POST['company_name'],
             'province'   => $province,
             'city' => $city,
             'district' => $district,

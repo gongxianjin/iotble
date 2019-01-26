@@ -23,6 +23,12 @@ class MachineModel extends Model {
         return $res;
     }
 
+    public function getMachineBydeviceId($deviceid) {
+        $res = $this->_db->where('xc_devicelist.deviceid='."'$deviceid'")
+            ->find();
+        return $res;
+    }
+
     public function updateByDevId($id, $data) {
         if(!$id) {
             throw_exception("ID不合法");
@@ -41,20 +47,25 @@ class MachineModel extends Model {
     }
 
     public function getMachine($data,$page,$pageSize=10) {
-        $conditions = $data;
+        $conditions = array();
+        $where = array();
         if(isset($data['devicename']) && $data['devicename'])  {
-            $conditions['devicename'] = array('like','%'.$data['devicename'].'%');
+            $where['devicename'] = array('like','%'.$data['devicename'].'%');
         }
         if(isset($data['deviceid']) && $data['deviceid'])  {
-            $conditions['deviceid'] = $data['deviceid'];
+            $where['deviceid'] =  array('like','%'.$data['deviceid'].'%'); 
         }
+        if(!empty($where)){
+          $where['_logic'] = 'or';
+          $conditions['_complex'] = $where;
+	    }
         if(isset($data['company_id']) && $data['company_id'])  {
             $conditions['company_id'] = $data['company_id'];
         }
         if(isset($data['admin_id']) && $data['admin_id'])  {
             $conditions['admin_id'] = $data['admin_id'];
         }
-        $offset = ($page - 1) * $pageSize;
+        $offset = ($page - 1) * $pageSize; 
         $res = $this->_db->where($conditions)->order('xc_devicelist.id desc')
             ->limit($offset,$pageSize)
             ->select();
@@ -63,12 +74,23 @@ class MachineModel extends Model {
     }
 
     public function getMachineCount($data = array()){
-        $conditions = $data;
+        $conditions = array();
+        $where = array();
         if(isset($data['devicename']) && $data['devicename']) {
-            $conditions['devicename'] = array('like','%'.$data['devicename'].'%');
+            $where['devicename'] = array('like','%'.$data['devicename'].'%');
         }
-        if(isset($data['id']) && $data['id'])  {
-            $conditions['id'] = $data['id'];
+        if(isset($data['deviceid']) && $data['deviceid'])  {
+            $where['deviceid'] =  array('like','%'.$data['deviceid'].'%'); 
+        }
+        if(!empty($where)){
+            $where['_logic'] = 'or';
+            $conditions['_complex'] = $where;
+        }
+        if(isset($data['company_id']) && $data['company_id'])  {
+            $conditions['company_id'] = $data['company_id'];
+        }
+        if(isset($data['admin_id']) && $data['admin_id'])  {
+            $conditions['admin_id'] = $data['admin_id'];
         }
         return $this->_db->where($conditions)->count();
     }

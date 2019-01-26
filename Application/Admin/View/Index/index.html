@@ -5,127 +5,91 @@
 
     <include file="Index/nav"/>
 
-<div id="page-wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
 
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    您好<?php echo getLoginUsername()?>!欢迎使用成都先讯管理平台
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> 平台整理指标
-                    </li>
-                </ol>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-table"></i>分析仪列表
+                        </li>
+                    </ol>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3></h3>
+                    <div class="table-responsive">
+                        <form id="singcms-listorder">
+                            <table class="table table-bordered table-hover singcms-table">
+                                <thead>
+                                <tr>
+                                    <th>内置分析仪ID</th>
+                                    <th>分析仪名称</th>
+                                    <th>测试员</th>
+                                    <th>单位</th>
+                                    <th>开始日期</th>
+                                    <th>结束日期</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <volist name="machines" id="vo">
+                                    <tr>
+                                        <td>{$vo.deviceid}</td>
+                                        <td>{$vo.devicename}</td>
+                                        <td>{$vo.admin_id|getAdminName}</td>
+                                        <td>{$vo.company_id|getCompanyName}</td>
+                                        <td>{$vo.start_time|date="Y-m-d",###}</td>
+                                        <td>{$vo.end_time|date="Y-m-d",###}</td>
+                                        <if condition="$test_id neq 0">
+                                            <td>{$vo.status|devstatus}</td>
+                                            <else />
+                                            <td><span attr-status="<if condition="$vo['status'] eq 1">0<else/>1</if>"  attr-id="{$vo.id}" class="sing_cursor singcms-on-off" id="singcms-on-off" >{$vo.status|devstatus}</span></td>
+                                        </if>
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true" id="singcms-list" attr-pid="{$vo.deviceid}"></span>
+                                            <if condition="$test_id eq 0">
+                                                <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$vo.id}" ></span>
+                                                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" id="singcms-alarm" attr-pid="{$vo.deviceid}"></span>
+                                            </if>
+                                        </td>
+                                    </tr>
+                                </volist>
+                                </tbody>
+                            </table>
+                            <nav>
+                                <ul >
+                                    {$pageres}
+                                </ul>
+                            </nav>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
         </div>
-
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-comments fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{$admincount}</div>
-                                <div>今日登录用户数</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="panel-footer">
-                        <span class="pull-left"></span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <!--<div class="huge">{$ordersum}/{$ordercount}</div>-->
-                                <div>销售额(元)/销售量(件)</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/admin.php?c=order&a=index">
-                        <div class="panel-footer">
-                            <span class="pull-left">查看</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa glyphicon glyphicon-asterisk  fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <!--<div class="huge">{$orderbacksum}</div>-->
-                                <div>退款金额(元)</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/admin.php?c=order&a=index">
-                        <div class="panel-footer">
-                            <span class="pull-left">查看</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-support fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <!--<div class="huge">{$maxordergoods.goods_name}</div>-->
-                                <div>热销商品</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/admin.php?c=goods">
-                        <div class="panel-footer">
-                            <span class="pull-left">查看</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- /.container-fluid -->
+    <!-- /#page-wrapper -->
 
 </div>
-<!-- /#page-wrapper -->
-<!-- Morris Charts JavaScript -->
 
-</div>
-    <!-- /#wrapper -->
+<script>
+    var SCOPE = {
+        'add_url' : '/admin.php?c=machine&a=add',
+        'edit_url' : '/admin.php?c=machine&a=edit',
+        'list_url' : '/admin.php?c=machine&a=itemlist&deviceid=',
+        'alarm_url' : '/admin.php?c=machine&a=machinelist&deviceid=',
+        'index_url' : '/admin.php?c=admin&a=index',
+    }
+</script>
 
 <include file="Index/footer" />

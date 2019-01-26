@@ -17,6 +17,12 @@ class AdminModel extends Model {
         $res = $this->_db->where('username="'.$username.'"')->find();
         return $res;
     }
+
+    public function getAdminByPhone($phone='') {
+        $res = $this->_db->where('phone="'.$phone.'"')->find();
+        return $res;
+    }
+
     public function getAdminByAdminId($adminId=0) {
         $res = $this->_db->where('admin_id='.$adminId)->find();
         return $res;
@@ -39,18 +45,43 @@ class AdminModel extends Model {
         return $this->_db->add($data);
     }
 
-    public function getAdmins($company_id) {
-        if($company_id){
-            $data = array(
+    public function getAdmins($data,$page,$pageSize=10) {
+        $conditions = array();
+        if(isset($data['company_id']) && $data['company_id']){
+            $conditions = array(
                 'status' => array('neq',-1),
-                'company_id' => array('eq',$company_id),
+                'company_id' => array('eq',$data['company_id']),
             );
         }else{
-            $data = array(
+            $conditions = array(
                 'status' => array('neq',-1),
             );
         }
-        return $this->_db->where($data)->order('admin_id desc')->select();
+        if(isset($data['username']) && $data['username'])  {
+            $conditions['username'] = array('like','%'.$data['username'].'%');
+        }
+        $offset = ($page - 1) * $pageSize;
+        return $this->_db->where($conditions)->order('admin_id desc')
+            ->limit($offset,$pageSize)
+            ->select();
+    }
+
+    public function getAdminsCount($data){
+        $conditions = array();
+        if(isset($data['company_id']) && $data['company_id']){
+            $conditions = array(
+                'status' => array('neq',-1),
+                'company_id' => array('eq',$data['company_id']),
+            );
+        }else{
+            $conditions = array(
+                'status' => array('neq',-1),
+            );
+        }
+        if(isset($data['username']) && $data['username'])  {
+            $conditions['username'] = array('like','%'.$data['username'].'%');
+        }
+        return $this->_db->where($conditions)->count();
     }
     /**
      * 通过id更新的状态
@@ -80,5 +111,6 @@ class AdminModel extends Model {
         $res = $this->_db->where($data)->count();
         return $res['tp_count'];
     }
+
 
 }

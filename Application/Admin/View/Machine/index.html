@@ -37,6 +37,12 @@
                             <input class="form-control" name="deviceid" type="text" value="" placeholder="分析仪ID"/>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">测试员</span>
+                            <input class="form-control" name="username" type="text" value="" placeholder="测试员"/>
+                        </div>
+                    </div>
                     <input type="hidden" name="c" value="machine"/>
                     <input type="hidden" name="a" value="index"/>
                     <div class="input-group">
@@ -84,6 +90,7 @@
                                     <span class="glyphicon glyphicon-th-list" aria-hidden="true" id="singcms-list" attr-pid="{$vo.deviceid}"></span>
                                     <if condition="$test_id eq 0">
                                         <span class="sing_cursor glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$vo.id}" ></span>
+                                        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true" id="singcms-alarm" attr-pid="{$vo.deviceid}"></span>
                                     </if>
                                 </td>
                             </tr>
@@ -115,9 +122,10 @@
     var SCOPE = {
         'add_url' : '/admin.php?c=machine&a=add',
         'edit_url' : '/admin.php?c=machine&a=edit',
-        'list_url' : '/admin.php?c=machine&a=machinelist&deviceid=',
+        'list_url' : '/admin.php?c=machine&a=itemlist&deviceid=',
+        'alarm_url' : '/admin.php?c=machine&a=machinelist&deviceid=',
         'set_status_url' : '/admin.php?c=machine&a=setStatus',
-        'index_url' : '/',
+        'index_url' : '/admin.php?c=machine&a=index',
     }
 </script>
 

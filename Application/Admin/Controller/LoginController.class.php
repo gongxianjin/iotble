@@ -15,11 +15,11 @@ class LoginController extends Controller {
     }
     
     public function check(){
-         $username = $_POST['username'];
+         $phone = $_POST['username'];
          $password = $_POST['password'];
          $code = $_POST['code'];
 
-        if(!trim($username)){
+        if(!trim($phone)){
              return show(0,'用户名不能为空');
          }
          if(!trim($password)){
@@ -31,21 +31,19 @@ class LoginController extends Controller {
         if(I('code','','strtolower') != session('verify')){
             return show(0,'验证码错误');
         }
-        $ret = D('Admin')->getAdminByUsername($username);
-
-        if($ret['status'] == 0) {
-            return show(0,'该用户正在审核中');
-        }
+        $ret = D('Admin')->getAdminByPhone($phone);
 
         if(!$ret || $ret['status'] !=1) {
             return show(0,'该用户不存在');
         }
-
+        if($ret['status'] == 0) {
+            return show(0,'该用户正在审核中');
+        }
         if($ret['password'] != getMd5Password($password)) {
             return show(0,'密码错误');
         }
 
-        D("Admin")->updateByAdminId($ret['admin_id'],array('lastlogintime'=>time()));
+        D("Admin")->updateByAdminId($ret['admin_id'],array('lastlogintime'=>time(),'lastloginip'=>get_client_ip()));
 
         // 添加操作日志记录
         $data = array(

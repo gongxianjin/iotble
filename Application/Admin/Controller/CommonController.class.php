@@ -31,7 +31,7 @@ class CommonController extends Controller {
 		'admin'=>array(
 				'arlias'=>'用户管理',
 				'items'=>array(
-						'index'=>'用户列表', 'add'=>'添加用户', 'personal'=>'编辑用户','setStatus'=>'删除用户'
+						'index'=>'用户列表', 'add'=>'添加用户', 'personal'=>'配置用户','setStatus'=>'删除用户','edit'=>'编辑用户',
 				),
 		),
 
@@ -47,7 +47,15 @@ class CommonController extends Controller {
 		'machine'=>array(
 				'arlias'=>'分析仪管理',
 				'items'=>array(
-						'index'=>'分析仪列表','add'=>'添加分析仪','edit'=>'编辑分析仪','set'=>'设置分析仪','machinelist'=>'测试数据列表','setStatus'=>'停用分析仪'
+						'index'=>'分析仪列表','add'=>'添加分析仪','edit'=>'编辑分析仪','set'=>'设置分析仪','machinelist'=>'预警列表','setStatus'=>'停用分析仪','additem'=>'添加测试项目','itemlist'=>'测试数据列表',
+				),
+		),
+
+		//地点管理
+		'pondaddr'=>array(
+				'arlias'=>'地点管理',
+				'items'=>array(
+						'index'=>'地址列表', 'add'=>'添加地址', 'update'=>'编辑地址','del'=>'删除地址'
 				),
 		),
 
@@ -90,9 +98,9 @@ class CommonController extends Controller {
 		$isLogin = $this->isLogin();
 		if(!$isLogin) {
 			// 跳转到登录页面
-//			$this->redirect('/admin.php?c=login');
+			$this->redirect('/admin.php?c=login');
 //			$this->redirect('admin/login/index');
-			$this->redirect('/admin.php/login');
+//			$this->redirect('/admin.php/login');
 		}
 		//检查权限
 		if(!checkOperModule(CONTROLLER_NAME,ACTION_NAME)){

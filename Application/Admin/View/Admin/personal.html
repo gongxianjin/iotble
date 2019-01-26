@@ -47,15 +47,15 @@
 							<input type="text" class="form-control" name="phone" id="inputPassword2" placeholder="" value="{$vo.phone}">
 						</div>
 					</div>
-					<div class="form-group">
-						<label  class="col-sm-2 control-label">用户组:</label>
-						<select class="btn btn-default" name="role_id" style="margin-left: 14px;">
-							<option value=''>请选择类型</option>
-							<foreach  name="sys" item="v">
-							<option value="{$v.id}" <if condition="$vo.role_id eq $v['id']">selected="selected"</if> >{$v.name}</option>
-							</foreach>
-						</select>
-					</div>
+					<!--<div class="form-group">-->
+						<!--<label  class="col-sm-2 control-label">用户组:</label>-->
+						<!--<select class="btn btn-default" name="role_id" style="margin-left: 14px;">-->
+							<!--<option value=''>请选择类型</option>-->
+							<!--<foreach  name="sys" item="v">-->
+							<!--<option value="{$v.id}" <if condition="$vo.role_id eq $v['id']">selected="selected"</if> >{$v.name}</option>-->
+							<!--</foreach>-->
+						<!--</select>-->
+					<!--</div>-->
 					<div class="form-group">
 						<label  class="col-sm-2 control-label">个人邮箱:</label>
 						<div class="col-sm-5">
@@ -87,7 +87,7 @@
 <script>
 	var SCOPE = {
 		'save_url' : '/admin.php?c=admin&a=save',
-		'jump_url' : '',
+		'jump_url' : '/admin.php?c=admin&a=index',
 	};
 
 </script>

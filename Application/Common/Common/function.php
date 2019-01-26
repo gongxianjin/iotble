@@ -38,6 +38,7 @@ function getCompanyName($company_id){
     return !empty($res['company_name'])?$res['company_name']:'';
 }
 
+
 function getMemberRoleName($roleid){
     if($roleid){
         $res = M('auth_group')->find($roleid);
@@ -256,3 +257,88 @@ function create_uuid(){
     return $uuid ;
 
 }
+
+/**
+ * 生成jwt
+ * @param $user_id
+ * @return string
+ */
+function jwt($admin_id){
+    // 生成header
+    $header = [
+        'typ'=>'JWT',
+        'alg'=>'HS256',
+    ];
+    $header = json_encode($header);
+    $header = base64_encode($header);
+
+    // 生成payload
+    $time = time();
+    $payload = [
+        'admin_id'=>$admin_id,
+        'iat'=>$time,
+        'exp'=>$time + C('jwt_expire'),
+    ];
+    $payload = json_encode($payload);
+    $payload = base64_encode($payload);
+
+    // 生成secret
+    $secret = hash_hmac('sha256', $header.$payload, C('jwt_salt'));
+
+    $jwt = $header.'.'. $payload.'.'.$secret;
+    return $jwt;
+}
+
+function getMillisecond() {
+    list($t1, $t2) = explode(' ', microtime());
+    return $t2 . '' .  ceil( ($t1 * 1000) );
+}
+
+function curl_get($url, $headers = [])
+{
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+
+    return $response;
+}
+
+
+function get_header_value($name = '', $default = null)
+{
+    if (empty($header)) {
+        $header = [];
+        if (function_exists('apache_request_headers') && $result = apache_request_headers()) {
+            $header = $result;
+        } else {
+            $server = $_SERVER;
+            foreach ($server as $key => $val) {
+                if (0 === strpos($key, 'HTTP_')) {
+                    $key          = str_replace('_', '-', strtolower(substr($key, 5)));
+                    $header[$key] = $val;
+                }
+            }
+            if (isset($server['CONTENT_TYPE'])) {
+                $header['content-type'] = $server['CONTENT_TYPE'];
+            }
+            if (isset($server['CONTENT_LENGTH'])) {
+                $header['content-length'] = $server['CONTENT_LENGTH'];
+            }
+        }
+        $header = array_change_key_case($header);
+    }
+    if (is_array($name)) {
+        return $this->header = array_merge($header, $name);
+    }
+    if ('' === $name) {
+        return $header;
+    }
+    $name = str_replace('_', '-', strtolower($name));
+    return isset($header[$name]) ? $header[$name] : $default;
+}
+

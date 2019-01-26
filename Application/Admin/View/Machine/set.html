@@ -1,78 +1,51 @@
 <include file="Index/header" />
 <body>
-
 <div id="wrapper">
-
     <include file="Index/nav"/>
 <div id="page-wrapper">
-
 	<div class="container-fluid">
-
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
-
 				<ol class="breadcrumb">
 					<li>
-						<i class="fa fa-dashboard"></i>  <a href="javascript:void(0)">货机管理</a>
+						<i class="fa fa-dashboard"></i>  <a href="javascript:void(0)">测试数据管理</a>
 					</li>
 					<li class="active">
-						<i class="fa fa-edit"></i> 设置货道
+						<i class="fa fa-edit"></i> 设置
 					</li>
 				</ol>
 			</div>
 		</div>
 		<!-- /.row -->
-
 		<div class="row">
 			<div class="col-lg-6">
-
 				<form class="form-horizontal" id="singcms-form">
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">货道:</label>
+						<label class="col-sm-2 control-label">内置分析仪ID:</label>
 						<div class="col-sm-5">
-							<span class="form-control">{$vo.lane}</span>
+							<input type="text"  class="form-control" value="{$vo['deviceid']}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">商品:</label>
-						<select class="btn btn-default" name="goods_id" style="margin-left: 14px;">
-							<option value=''>请选择商品</option>
-							<foreach  name="goods" item="v">
-								<option value="{$v.goods_id}" <if condition="$vo.goods_id eq $v['goods_id']">selected="selected"</if> >{$v.goods_name}</option>
-							</foreach>
-						</select>
-					</div>
-					<div class="form-group">
-						<label  class="col-sm-2 control-label">商品库存:</label>
+						<label  class="col-sm-2 control-label">测试项目:</label>
 						<div class="col-sm-5">
-							<input type="text" name="sto" class="form-control" id="inputname1"  value="{$vo.sto}"/>
+							<input type="text" name="item" class="form-control"  value="{$vo['item']}" disabled>
 						</div>
 					</div>
 					<div class="form-group">
-						<label  class="col-sm-2 control-label">货道容量:</label>
+						<label for="inputname4" class="col-sm-2 control-label">预警值:</label>
 						<div class="col-sm-5">
-							<input type="text" name="max_sto" class="form-control" id="inputname2"  value="{$vo.max_sto}"/>
+							<input type="text" name="alarm" class="form-control" id="inputname4" placeholder="" value="{$vo['alarm']}">
 						</div>
 					</div>
-					<div class="form-group">
-						<label  class="col-sm-2 control-label">库存预警:</label>
-						<div class="col-sm-5">
-							<input type="text" name="alarm_sto" class="form-control" id="inputname3"  value="{$vo.alarm_sto}"/>
-						</div>
-					</div>
-
-					<input type="hidden" name="id" value="{$vo.id}"/>
-					<input type="hidden" name="lane" value="{$vo.lane}"/>
-
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
+							<input type="hidden" name="id" value="{$vo.id}"/>
 							<button type="button" class="btn btn-default" id="singcms-button-submit">提交</button>
 						</div>
 					</div>
 				</form>
-
-
 			</div>
 
 		</div>
@@ -90,7 +63,6 @@
 		'save_url' : '/admin.php?c=machine&a=set',
 		'jump_url' : '/admin.php?c=machine&a=index',
 	};
-
 </script>
 <!-- /#wrapper -->
 <script type="text/javascript" src="/Public/js/admin/form.js"></script>
