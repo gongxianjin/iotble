@@ -1,0 +1,85 @@
+<include file="Index/header" />
+<body>
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-dashboard"></i>  <a href="/admin.php?c=machine">分析仪管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-tab	le"></i>添加测试项目
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<div class="col-lg-6">
+					<form class="form-horizontal" id="singcms-form">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">内置分析仪ID:</label>
+							<div class="col-sm-5">
+								<input type="text"  class="form-control" value="{$deviceid}" disabled>
+							</div>
+						</div>
+						<!--<div class="form-group">-->
+							<!--<label for="inputname1" class="col-sm-2 control-label">标识ID:</label>-->
+							<!--<div class="col-sm-5">-->
+								<!--<input type="text" name="itemid" class="form-control" id="inputname1" placeholder="请填写标识ID">-->
+							<!--</div>-->
+						<!--</div>-->
+						<div class="form-group">
+							<label for="inputname2" class="col-sm-2 control-label">测试项目:</label>
+							<div class="col-sm-5">
+								<input type="text" name="item" class="form-control" id="inputname2" placeholder="请填写测试项目">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputname3" class="col-sm-2 control-label">计量单位:</label>
+							<div class="col-sm-5">
+								<input type="text" name="unit" class="form-control" id="inputname3" placeholder="请填写计量单位">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputname4" class="col-sm-2 control-label">预警值:</label>
+							<div class="col-sm-5">
+								<input type="text" name="alarm" class="form-control" id="inputname4" placeholder="请填写预警值">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputname5" class="col-sm-2 control-label">地点号:</label>
+							<div class="col-sm-5">
+								<input type="text" name="pond_num" class="form-control" id="inputname5" placeholder="请填写地点号">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" value="{$deviceid}" name="deviceid"/>
+								<button type="button" class="btn btn-default" id="singcms-button-submit">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container-fluid -->
+
+	</div>
+	<!-- /#page-wrapper -->
+
+</div>
+<script>
+	var SCOPE = {
+		'save_url' : '/admin.php?c=machine&a=additem',
+		'jump_url' : '/admin.php?c=machine',
+	};
+</script>
+<include file="Index/footer" />
